@@ -1,0 +1,269 @@
+<div ng-init="prepopulateBasicneeds()">
+	<header></header>
+	<!-- <h3>Vertical Pills</h3> -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/assessment/assessmentSidebar.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row" id="caseId">
+                <div class="col-xs-3">
+                    <h4>Case ID: {{caseId}}</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a class="generate-anchor navbar-right" style="padding-right: 5%;" ng-click="saveBasicneeds(true)" ng-hide="currentAssessment == 'PostExit'">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post">
+                <h1>Basic Needs</h1>
+                <strong>{{m.basicneeds_housing_subheading}}</strong>
+                <p>
+                    16. {{m.basicneeds_housing_q}} <a ng-click="housing=''; housingSafe=''; housingAdequate=''; housingUnsubsidized=''; basicneedsChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="housing" ng-model="housing" ng-change="housingSafe=''; housingAdequate=''; housingUnsubsidized=''; basicneedsChange()"/>{{point1}} {{m.basicneeds_housing_no}}
+                    <br/>
+                    <input type="radio" value="1" name="housing" ng-model="housing" ng-change="basicneedsChange()"/> {{m.basicneeds_housing_yes}}
+                </p>
+                <div id="housingSafe" ng-show="housing==1 && housing!=''">
+                    <p>
+                        {{m.basicneeds_housingSafe_q}}
+                        <br/>
+                        <input type="radio" value="0" name="housingSafe" ng-model="housingSafe" ng-change="housingAdequate=''; housingUnsubsidized='';" />{{point2}} {{m.basicneeds_housingSafe_no}}
+                        <br/>
+                        <input type="radio" value="1" name="housingSafe" ng-model="housingSafe"/> {{m.basicneeds_housingSafe_yes}}
+                    </p>
+                    <div id="housingAdequate" ng-show="housingSafe==1 && housingSafe!=''">
+                        <p>
+                            {{m.basicneeds_housingAdequate_q}}
+                            <br/>
+                            <input type="radio" value="0" name="housingAdequate" ng-model="housingAdequate" ng-change="housingUnsubsidized='';"/>{{point3}} {{m.basicneeds_housingAdequate_no}}
+                            <br/>
+                            <input type="radio" value="1" name="housingAdequate" ng-model="housingAdequate"/> {{m.basicneeds_housingAdequate_yes}}
+                        </p>
+                        <div id="housingUnsubsidized" ng-show="housingAdequate==1 && housingAdequate!=''">
+                            <p>
+                                {{m.basicneeds_housingUnsubsidized_q}}
+                                <br/>
+                                <input type="radio" value="0" name="housingUnsubsidized" ng-model="housingUnsubsidized"/>{{point4}} {{m.basicneeds_housingUnsubsidized_no}}
+                                <br/>
+                                <input type="radio" value="1" name="housingUnsubsidized" ng-model="housingUnsubsidized"/>{{point5}} {{m.basicneeds_housingUnsubsidized_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    17. {{m.basicneeds_housingComment}}
+                    <br/>
+                    <textarea class="form-control" name="housingComment" rows="5" ng-model="housingComment"></textarea>
+                </p>
+                <strong>{{m.basicneeds_food_subheading}}</strong>
+                <p>
+                    18. {{m.basicneeds_food_q}} <a ng-click="food=''; foodMeet=''; foodStamps=''; foodDesire=''; basicneedsChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="food" ng-model="food" ng-change="foodMeet=''; foodStamps=''; foodDesire=''; basicneedsChange()"/>{{point1}} {{m.basicneeds_food_no}}
+                    <br/>
+                    <input type="radio" value="1" name="food" ng-model="food" ng-change="basicneedsChange()"/> {{m.basicneeds_food_yes}}
+                </p>
+                <div id="foodMeet" ng-show="food==1 && food!=''">
+                    <p>
+                        {{m.basicneeds_foodMeet_q}}
+                        <br/>
+                        <input type="radio" value="0" ng-model="foodMeet" ng-change="foodStamps=''; foodDesire='';" />{{point2}} {{m.basicneeds_foodMeet_no}}
+                        <br/>
+                        <input type="radio" value="1" name="foodMeet" ng-model="foodMeet"/> {{m.basicneeds_foodMeet_yes}}
+                    </p>
+                    <div id="foodStamps" ng-show="foodMeet==1 && foodMeet!=''">
+                        <p>
+                            {{m.basicneeds_foodStamps_q}}
+                            <br/>
+                            <input type="radio" value="0" name="foodStamps" ng-model="foodStamps" ng-change="foodDesire='';"/>{{point3}} {{m.basicneeds_foodStamps_no}}
+                            <br/>
+                            <input type="radio" value="1" name="foodStamps" ng-model="foodStamps"/> {{m.basicneeds_foodStamps_yes}}
+                        </p>
+                        <div id="foodDesire" ng-show="foodStamps==1 && foodStamps!=''">
+                            <p>
+                                {{m.basicneeds_foodDesire_q}}
+                                <br/>
+                                <input type="radio" value="0" name="foodDesire" ng-model="foodDesire"/>{{point4}} {{m.basicneeds_foodDesire_no}}
+                                <br/>
+                                <input type="radio" value="1" name="foodDesire" ng-model="foodDesire"/>{{point5}} {{m.basicneeds_foodDesire_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    19. {{m.basicneeds_foodComment}}
+                    <br/>
+                    <textarea class="form-control" name="foodComment" rows="5" ng-model="foodComment"></textarea>
+                </p>
+                <strong>{{m.basicneeds_children_subheading}}</strong>
+                <p>
+                    20. {{m.basicneeds_children_q}} <a ng-click="children=''; childcareAccess=''; childcareAffordable=''; childcareQuality=''; childcareSubsidy=''; basicneedsChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="children" ng-model="children" ng-change="childcareAccess=''; childcareAffordable=''; childcareQuality=''; childcareSubsidy='';basicneedsChange()"/> {{m.basicneeds_children_no}}
+                    <br/>
+                    <input type="radio" value="1" name="children" ng-model="children" ng-change="basicneedsChange()"/> {{m.basicneeds_children_yes}}
+                </p>
+                <div id="childcareAccess" ng-show="children==1 && children!=''">
+                    <p>
+                        {{m.basicneeds_childcareAccess_q}}
+                        <br/>
+                        <input type="radio" value="0" name="childcareAccess" ng-model="childcareAccess" ng-change="childcareAffordable=''; childcareQuality=''; childcareSubsidy='';" />{{point1}} {{m.basicneeds_childcareAccess_no}}
+                        <br/>
+                        <input type="radio" value="1" name="childcareAccess" ng-model="childcareAccess"/> {{m.basicneeds_childcareAccess_yes}}
+                    </p>
+                    <div id="childcareAffordable" ng-show="childcareAccess==1 && childcareAccess!=''">
+                        <p>
+                            {{m.basicneeds_childcareAffordable_q}}
+                            <br/>
+                            <input type="radio" value="0" name="childcareAffordable" ng-model="childcareAffordable" ng-change="childcareQuality=''; childcareSubsidy='';" />{{point2}} {{m.basicneeds_childcareAffordable_no}}
+                            <br/>
+                            <input type="radio" value="1" name="childcareAffordable" ng-model="childcareAffordable"/> {{m.basicneeds_childcareAffordable_yes}}
+                        </p>
+                        <div id="childcareQuality" ng-show="childcareAffordable==1 && childcareAffordable!=''">
+                            <p>
+                                {{m.basicneeds_childcareQuality_q}}
+                                <br/>
+                                <input type="radio" value="0" name="childcareQuality" ng-model="childcareQuality" ng-change="childcareSubsidy='';"/>{{point3}} {{m.basicneeds_childcareQuality_no}}
+                                <br/>
+                                <input type="radio" value="1" name="childcareQuality" ng-model="childcareQuality"/> {{m.basicneeds_childcareQuality_yes}}
+                            </p>
+                            <div id="childcareSubsidy" ng-show="childcareQuality==1 && childcareQuality!='' ">
+                                <p>
+                                    {{m.basicneeds_childcareSubsidy_q}}
+                                    <br/>
+                                    <input type="radio" value="0" name="childcareSubsidy" ng-model="childcareSubsidy"/>{{point4}} {{m.basicneeds_childcareSubsidy_no}}
+                                    <br/>
+                                    <input type="radio" value="1" name="childcareSubsidy" ng-model="childcareSubsidy"/>{{point5}} {{m.basicneeds_childcareSubsidy_yes}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    21. {{m.basicneeds_childrenComment}}
+                    <br/>
+                    <textarea class="form-control" name="childrenComment" rows="5" ng-model="childrenComment"></textarea>
+                </p>
+                <strong>{{m.basicneeds_transportaion_subheading}}</strong>
+                <p>
+                    22. {{m.basicneeds_transportation_q}} <a ng-click="transportation=''; transportationReliable=''; transportationAccessible=''; transportationAffordable=''; basicneedsChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="transportation" ng-model="transportation" ng-change="transportationReliable=''; transportationAccessible=''; transportationAffordable=''; basicneedsChange()"/>{{point1}} {{m.basicneeds_transportation_no}}
+                    <br/>
+                    <input type="radio" value="1" name="transportation" ng-model="transportation" ng-change="basicneedsChange()"/> {{m.basicneeds_transportation_yes}}
+                </p>
+                <div id="transportationReliable" ng-show="transportation==1 && transportation!=''">
+                    <p>
+                        {{m.basicneeds_transportationReliable_q}}
+                        <br/>
+                        <input type="radio" value="0" name="transportationReliable" ng-model="transportationReliable" ng-change="transportationAccessible=''; transportationAffordable='';"/>{{point2}} {{m.basicneeds_transportationReliable_no}}
+                        <br/>
+                        <input type="radio" value="1" name="transportationReliable" ng-model="transportationReliable"/> {{m.basicneeds_transportationReliable_yes}}
+                    </p>
+                    <div id="transportationAccessible" ng-show="transportationReliable==1 && transportationReliable!=''">
+                        <p>
+                            {{m.basicneeds_transportationAccessible_q}}
+                            <br/>
+                            <input type="radio" value="0" name="transportationAccessible" ng-model="transportationAccessible" ng-change="transportationAffordable='';"/>{{point3}} {{m.basicneeds_transportationAccessible_no}}
+                            <br/>
+                            <input type="radio" value="1" name="transportationAccessible" ng-model="transportationAccessible"/> {{m.basicneeds_transportationAccessible_yes}}
+                        </p>
+                        <div id="transportationAffordable" ng-show="transportationAccessible==1 && transportationAccessible!=''">
+                            <p>
+                                {{m.basicneeds_transportationAffordable_q}}
+                                <br/>
+                                <input type="radio" value="0" name="transportationAffordable" ng-model="transportationAffordable"/>{{point4}} {{m.basicneeds_transportationAffordable_no}}
+                                <br/>
+                                <input type="radio" value="1" name="transportationAffordable" ng-model="transportationAffordable"/>{{point5}} {{m.basicneeds_transportationAffordable_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    23. {{m.basicneeds_transportationComment}}
+                    <br/>
+                    <textarea class="form-control" name="transportationComment" rows="5" ng-model="transportationComment"></textarea>
+                </p>
+                <strong>{{m.basicneeds_safeHome_subheading}}</strong>
+                <p>
+                    24. {{m.basicneeds_safeHome_q}} <a ng-click="safeHome=''; safeOutside=''; violenceLow=''; crimeLow=''; basicneedsChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="safeHome" ng-model="safeHome" ng-change="safeOutside=''; violenceLow=''; crimeLow=''; basicneedsChange()"/>{{point1}} {{m.basicneeds_safeHome_no}}
+                    <br/>
+                    <input type="radio" value="1" name="safeHome" ng-model="safeHome" ng-change="basicneedsChange()"/> {{m.basicneeds_safeHome_yes}}
+                </p>
+                <div id="safeOutside" ng-show="safeHome==1 && safeHome!=''">
+                    <p>
+                        {{m.basicneeds_safeOutside_q}}
+                        <br/>
+                        <input type="radio" value="0" name="safeOutside" ng-model="safeOutside" ng-change="violenceLow=''; crimeLow='';" />{{point2}} {{m.basicneeds_safeOutside_no}}
+                        <br/>
+                        <input type="radio" value="1" name="safeOutside" ng-model="safeOutside"/> {{m.basicneeds_safeOutside_yes}}
+                    </p>
+                    <div id="violenceLow" ng-show="safeOutside==1 && safeOutside!=''">
+                        <p>
+                            {{m.basicneeds_violenceLow_q}}
+                            <br/>
+                            <input type="radio" value="0" name="violenceLow" ng-model="violenceLow" ng-change="crimeLow='';" />{{point3}} {{m.basicneeds_violenceLow_no}}
+                            <br/>
+                            <input type="radio" value="1" name="violenceLow" ng-model="violenceLow"/> {{m.basicneeds_violenceLow_yes}}
+                        </p>
+                        <div id="crimeLow" ng-show="violenceLow==1 && violenceLow!=''">
+                            <p>
+                                {{m.basicneeds_crimeLow_q}}
+                                <br/>
+                                <input type="radio" value="0" name="crimeLow" ng-model="crimeLow"/>{{point4}} {{m.basicneeds_crimeLow_no}}
+                                <br/>
+                                <input type="radio" value="1" name="crimeLow" ng-model="crimeLow"/>{{point5}} {{m.basicneeds_crimeLow_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    25. {{m.basicneeds_safeHomeComment}}
+                    <br/>
+                    <textarea class="form-control" name="safeHomeComment" rows="5" id="comment" ng-model="safeHomeComment"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/finances" class="btn btn-lg btn-primary sharp" value="Back">Previous</a>
+                            <a ng-click="saveBasicneeds(false)" class="btn btn-lg btn-primary sharp" value="Forward"
+                               ng-disabled="currentAssessment == 'PostExit'">Next</a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal"
+                                    ng-disabled="currentAssessment == 'PostExit'">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    ng-click="continueLaterBasicneeds=true;saveBasicneeds(false)">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>        

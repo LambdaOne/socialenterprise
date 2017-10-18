@@ -1,0 +1,37 @@
+<div class="col-sm-2 col-md-2 col-lg-2 sidebar" style="background-color:white; color:#3694BF; padding-top:10%;width: 201px;top: 49px;">
+    <!--  <div class="col-xs-1 col-sm-3 col-md-2 sidebar" style="background-color:white; color:#3694BF; padding-top:10%;"> -->
+    <ul class="nav nav-sidebar">
+        <li><a href="#/dashboard">
+            <span class="glyphicon glyphicon-home largerIcon" style="padding-right: 10px;"></span>Dashboard
+            <span class="sr-only">(current)</span>
+            </a>
+        	<hr>
+        </li>
+        <li ng-hide="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600">
+            <a href="#/incompleteAssessmentTable">
+            <notification-icon animation="grow" count="userData.incompleteAssessmentCount">
+                    <i class="fa fa-bell fa-2x"></i>
+                </notification-icon>
+                Alerts
+            </a>
+            <hr>
+        </li>
+        <li ng-hide="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600"><a href="#/assessmenttype">
+            <span class="glyphicon glyphicon-plus" style="padding-right: 10px;"></span>New</a>
+            <hr>
+        </li>
+        <li ng-show="userData.memberRoleNumber == 500"><a href="#/newCommunity">
+            <span class="glyphicon glyphicon-plus" style="padding-right: 10px;"></span>New</a>
+            <hr>
+        </li>
+        <li ng-show="userData.memberRoleNumber == 600"><a href="#/newPartner">
+            <span class="glyphicon glyphicon-plus" style="padding-right: 10px;"></span>New</a>
+            <hr>
+        </li>
+        <li ng-show="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600"><a href="#/sampleDemographics">
+         <span class="glyphicon glyphicon-list-alt" style="padding-right: 10px;"></span>Sample Assessment</a>
+         <hr>
+        </li>
+        <!-- <li><a href="#">Export</a></li> -->
+    </ul>
+</div>

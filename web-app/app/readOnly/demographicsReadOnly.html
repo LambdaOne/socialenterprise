@@ -1,0 +1,168 @@
+<div >
+    <!-- Top Nav Header -->
+    <header></header>
+    <!-- Vertical Pills -->
+    <!-- CHECKMARK icon when a section is complete - use glyphicon glyphicon-ok -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <!-- Assessment Complete Button / Link in upper right: shows on all pages of assessment -->
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <!-- Pull in Case ID number here -->
+                    <h4><!--Case ID<span>&nbsp;#123456</span>--> READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <!--<a href="#/confirmation" class="generate-anchor navbar-right" style="padding-right: 5%;">-->
+                    <!--<h4><u>Assessment Complete</u></h4>-->
+                    <!--</a>-->
+                </div>
+            </div>
+        </div>
+        <!-- END Assessment Complete Button -->
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="demographic.jsp">
+                <div class="form-group">
+                    <br>
+                    <label class="control-label col-sm-2" for="assessmentType">Assessment Type</label>
+                    <div class="col-sm-10 col-md-10">
+                        <select ng-model="selectedAssessmentType" class="selectpicker" style="height:34px;" id="assessmentType"
+                                ng-init="selectedAssessmentType=currentAssessment">
+                            <option value="Entry" ng-disabled="currentAssessment != '' && assessmentComplete == 'Yes'">Entry</option>
+                            <option value="Interim" ng-disabled="currentAssessment == '' || currentAssessment == 'Exit'
+                            || currentAssessment == 'PostExit' || (currentAssessment != '' && assessmentComplete == 'No')">Interim</option>
+                            <option value="Exit" ng-disabled="currentAssessment == '' || currentAssessment == 'Exit' || currentAssessment == 'PostExit'
+                            || (currentAssessment != '' && assessmentComplete == 'No')">Exit</option>
+                            <option value="PostExit" ng-disabled="currentAssessment == '' || currentAssessment == 'Entry' || currentAssessment == 'Interim'
+                                                                    || currentAssessment != 'Exit' || (currentAssessment != '' && assessmentComplete == 'No') ">Post-Exit</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="firstName">1. First Name</label>
+                    <div class="col-sm-10 col-md-4">
+                        <input type="text" class="form-control" id="firstName" ng-model="firstname" placeholder="Enter first name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="firstName">2. Last Name</label>
+                    <div class="col-sm-10 col-md-4">
+                        <input type="text" class="form-control" id="lastName" ng-model="lastname" placeholder="Enter last name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="gender">3. Gender</label>
+                    <div class="col-sm-10 col-md-10">
+                        <select ng-model="selectedGender" class="selectpicker" style="height:34px;" id="gender" ng-init="selectedGender='default'">
+                            <option value="default" selected>-Select-</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="race">4. Race (check all that apply)</label>
+                    <!-- Begin Race checkbox area -->
+                    <div class="row">
+                        <div class="col-sm-8" id="race">
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkAfricanAmerican"><label>African American/Black of African descent</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkAsianAmerican"> <label>Asian American/Asian (&#34;East&#34;, &#34;South&#34;, &#34;Southeast&#34;)</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkHawaiinPacific"> <label>Hawaiian/Pacific Islander</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkLatinoHispanic"> <label>Latino(a)/Hispanic</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkMidEasternArabAmerican"> <label>Middle Eastern/Arab American</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkNativeIndianAlaskanAmerican"> <label>Native American/American Indian/Alaskan Native</label>
+                            </div>
+                            <div class="checkbox checkbox-primary">
+                                <input type="checkbox" ng-model="chkEuropeanAmerican"> <label>White or European American</label>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" ng-model="chkOtherRace"> <label>Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Race checkboxes -->
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-xs-12 col-md-5">
+                            <label class="control-label" for="numKidsHsehld" style="margin-left: 12px;">5. Number of children (all children) in the household:</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4" >
+                            <input type="number" class="form-control inputItem" id="numKidsHsehld" placeholder="0-15" min="0" max="15" ng-model="numKidsHsehld">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-5">
+                            <label class="control-label" for="numKidsSchl" style="margin-left: 12px;">6. Number of children in school in the household:</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="number" class="form-control inputItem" id="numKidsSchl" placeholder="0-15" min="0" max="15" ng-model="numKidsSchl">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-5">
+                            <label class="control-label" for="numAdults" style="margin-left: 12px;">7. Number of adults in the  household:</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="number" class="form-control inputItem" id="numAdults" placeholder="0-15" min="0" max="15" ng-model="numAdults">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-md-5">
+                            <label class="control-label" for="zip" style="margin-left: 12px;">8. Resident's zip code</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="text" class="form-control inputItem zip" id="zip" placeholder="Enter zip code" size="6" maxlength="6" ng-model="resiZipCode">
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom right buttons -->
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <!--<a href="#/dashboard" class="btn btn-lg btn-primary sharp">Previous</a>-->
+                            <a href="#/sampleFinances" class="btn btn-lg btn-primary sharp"> Next </a>
+                            <button ng-disabled="currentAssessment == 'PostExit'" type="button" class="btn btn-lg btn-default sharp"
+                                    data-toggle="modal" data-target="#laterModal1">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

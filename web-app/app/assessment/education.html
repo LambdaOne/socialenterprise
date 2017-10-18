@@ -1,0 +1,150 @@
+<div ng-init="prepopulateEducation()">
+    <header></header>
+    <!-- <h3>Vertical Pills</h3> -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/assessment/assessmentSidebar.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row" id="caseId">
+                <div class="col-xs-3">
+                    <h4>Case ID: {{caseId}}</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a class="generate-anchor navbar-right" style="padding-right: 5%;" ng-click="saveEducation(true)" ng-hide="currentAssessment == 'PostExit'">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post">
+                <h1>Education</h1>
+                <strong>{{m.education_children_subheading}}</strong>
+                <p>
+                    26. {{m.education_children_q}} <a ng-click="children=''; childrenEnrolled=''; childrenAttending=''; childrenMove=''; childrenAccess=''; educationChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="children" onclick="toggleDisplayOff('childrenEnrolled')" ng-model="children"
+                           ng-change="childrenEnrolled=''; childrenAttending=''; childrenMove=''; childrenAccess=''; educationChange()"/> {{m.education_children_no}}
+                    <br/>
+                    <input type="radio" value="1" name="children" onclick="toggleDisplayOn('childrenEnrolled')" ng-model="children" ng-change="educationChange()"/> {{m.education_children_yes}}
+                </p>
+                <div id="childrenEnrolled" ng-show="children==1 && children!=''">
+                    <p>
+                        {{m.education_childrenEnrolled_q}}
+                        <br/>
+                        <input type="radio" value="0" name="childrenEnrolled" ng-model="childrenEnrolled" ng-change="childrenAttending=''; childrenMove=''; childrenAccess='';" />{{point1}} {{m.education_childrenEnrolled_no}}
+                        <br/>
+                        <input type="radio" value="1" name="childrenEnrolled" ng-model="childrenEnrolled"/> {{m.education_childrenEnrolled_yes}}
+                    </p>
+                    <div id="childrenAttending" ng-show="childrenEnrolled==1 && childrenEnrolled!=''">
+                        <p>
+                            {{m.education_childrenAttending_q}}
+                            <br/>
+                            <input type="radio" value="0" name="childrenAttending" ng-model="childrenAttending" ng-change="childrenMove=''; childrenAccess='';" />{{point2}} {{m.education_childrenAttending_no}}
+                            <br/>
+                            <input type="radio" value="1" name="childrenAttending" ng-model="childrenAttending"/> {{m.education_childrenAttending_yes}}
+                        </p>
+                        <div id="childrenMove" ng-show="childrenAttending==1 && childrenAttending!=''">
+                            <p>
+                                {{m.education_childrenMove_q}}
+                                <br/>
+                                <input type="radio" value="0" name="childrenMove" ng-model="childrenMove"  ng-change="childrenAccess='';"/>{{point3}} {{m.education_childrenMove_no}}
+                                <br/>
+                                <input type="radio" value="1" name="childrenMove" ng-model="childrenMove"/> {{m.education_childrenMove_yes}}
+                            </p>
+                            <div id="childrenAccess" ng-show="childrenMove==1 && childrenMove!=''">
+                                <p>
+                                    {{m.education_childrenAccess_q}}
+                                    <br/>
+                                    <input type="radio" value="0" name="childrenAccess" ng-model="childrenAccess"/>{{point4}} {{m.education_childrenAccess_no}}
+                                    <br/>
+                                    <input type="radio" value="1" name="childrenAccess" ng-model="childrenAccess"/>{{point5}} {{m.education_childrenAccess_yes}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    27. {{m.education_childrenEducationComment}}
+                    <br/>
+                    <textarea name="childrenEducationComment" class="form-control" rows="5" ng-model="childrenEducationComment"></textarea>
+                </p>
+                <strong>{{m.education_literacy_subheading}}</strong>
+                <p>
+                    28. {{m.education_literacy_q}} <a ng-click="literacy=''; diploma=''; educationTraining=''; educationComplete=''; educationChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="literacy" onclick="toggleDisplayOff('diploma')" ng-model="literacy" ng-change="diploma=''; educationTraining=''; educationComplete=''; educationChange()"/>{{point1}} {{m.education_literacy_no}}
+                    <br/>
+                    <input type="radio" value="1" name="literacy" onclick="toggleDisplayOn('diploma')" ng-model="literacy" ng-change="educationChange()"/> {{m.education_literacy_yes}}
+                </p>
+                <div id="diploma" ng-show="literacy==1 && literacy!=''">
+                    <p>
+                        {{m.education_diploma_q}}
+                        <br/>
+                        <input type="radio" value="0" name="diploma" onclick="toggleDisplayOff('educationTraining')" ng-model="diploma" ng-change="educationTraining=''; educationComplete='';" />{{point2}} {{m.education_diploma_no}}
+                        <br/>
+                        <input type="radio" value="1" name="diploma" onclick="toggleDisplayOn('educationTraining')" ng-model="diploma"/> {{m.education_diploma_yes}}
+                    </p>
+                    <div id="educationTraining" ng-show="diploma==1 && diploma!=''">
+                        <p>
+                            {{m.education_educationTraining_q}}
+                            <br/>
+                            <input type="radio" value="0" name="educationTraining" onclick="toggleDisplayOff('educationComplete')" ng-model="educationTraining" ng-change="educationComplete='';" />{{point3}} {{m.education_educationTraining_no}}
+                            <br/>
+                            <input type="radio" value="1" name="educationTraining" onclick="toggleDisplayOn('educationComplete')" ng-model="educationTraining"/> {{m.education_educationTraining_yes}}
+                        </p>
+                        <div id="educationComplete" ng-show="educationTraining==1 && educationTraining!=''">
+                            <p>
+                                {{m.education_educationComplete_q}}
+                                <br/>
+                                <input type="radio" value="0" name="educationComplete" ng-model="educationComplete"/>{{point4}} {{m.education_educationComplete_no}}
+                                <br/>
+                                <input type="radio" value="1" name="educationComplete" ng-model="educationComplete"/>{{point5}} {{m.education_educationComplete_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    29. {{m.education_adultEducationComment}}
+                    <br/>
+                    <textarea name="adultEducationComment" class="form-control" rows="5" ng-model="adultEducationComment"></textarea>
+                </p>
+                <!-- Bottom right buttons -->
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/basicneeds" class="btn btn-lg btn-primary sharp">Previous</a>
+                            <a ng-click="saveEducation(false)" class="btn btn-lg btn-primary sharp" ng-disabled="currentAssessment == 'PostExit'">Next</a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal"
+                                    ng-disabled="currentAssessment == 'PostExit'">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    ng-click="continueLaterEducation=true;saveEducation(false)">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>        

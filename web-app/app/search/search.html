@@ -1,0 +1,5 @@
+<div ng-init="validateSession()" ng-click="validateSession()">
+    <div ng-include="'app/search/search-caseworker.html'" ng-show="userData.memberRoleNumber == 300 || userData.memberRoleNumber == 400"></div>
+    <div ng-include="'app/search/search-admin.html'" ng-show="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600"></div>
+    <div ng-include="'app/utils/printframe.html'"></div>
+</div>

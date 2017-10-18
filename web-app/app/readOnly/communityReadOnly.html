@@ -1,0 +1,178 @@
+<div>
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h4>READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a href="#" class="generate-anchor navbar-right" style="padding-right: 5%;">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="community.jsp">
+                <h1>Community Support</h1>
+                <strong>Family/Social Relationships</strong>
+                <p>
+                    38. Does the client have support from family or friends?
+                    <br/>
+                    <input type="radio" value="" name="support" onclick="toggleDisplayOff('relateWell')" /> 1 point - No: Lack of necessary support from family or friends; abuse (domestic violence and/or child abuse) is present or there is child neglect
+                    <br/>
+                    <input type="radio" value="" name="support" onclick="toggleDisplayOn('relateWell')" /> Yes
+                </p>
+                <div id="relateWell" style="display: none">
+                    <p>
+                        Do family/friends relate well and are they active in changing negative behaviors?
+                        <br/>
+                        <input type="radio" value="" name="relateWell" onclick="toggleDisplayOff('strongSupport')" /> 2 points - No: Family/friends may be supportive but lack ability or resources to help; family members do not relate well with one another; potential for abuse or neglect
+                        <br/>
+                        <input type="radio" value="" name="relateWell" onclick="toggleDisplayOn('strongSupport')" /> Yes
+                    </p>
+                    <div id="strongSupport" style="display: none">
+                        <p>
+                            Does client have strong support from family/friends and do family/friends support one another?
+                            <br/>
+                            <input type="radio" value="" name="strongSupport" onclick="toggleDisplayOff('networkExpanding')" /> 3 points - No: Some support from family/friends; family members acknowledge and seek to change negative behaviors; are learning to communicate and support
+                            <br/>
+                            <input type="radio" value="" name="strongSupport" onclick="toggleDisplayOn('networkExpanding')" /> Yes
+                        </p>
+                        <div id="networkExpanding" style="display: none">
+                            <p>
+                                Is the client's support network expanding?
+                                <br/>
+                                <input type="radio" value="" name="networkExpanding" /> 4 points - No: Strong support from family or friends; household members support each other's efforts
+                                <br/>
+                                <input type="radio" value="" name="networkExpanding" /> 5 points - Yes: Has healthy/expanding support network; household is stable and communication is consistently open
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    39. Any additional comments on family/social relationships dimension:
+                    <br/>
+                    <textarea name="housingComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Community Involvement</strong>
+                <p>
+                    40. Is the client in crisis mode?
+                    <br/>
+                    <input type="radio" value="" name="crisisMode" onclick="toggleDisplayOff('skills')" /> 1 point - Yes: Not applicable due to crisis situation; in "survival" mode
+                    <br/>
+                    <input type="radio" value="" name="crisisMode" onclick="toggleDisplayOn('skills')" /> No
+                </p>
+                <div id="skills" style="display: none">
+                    <p>
+                        Does the client have the skills, motivation, and knowledge to become involved in their community? Involvement may include anything from civic engagement to attending church regularly; it should be defined by the client.
+                        <br/>
+                        <input type="radio" value="" name="skills" onclick="toggleDisplayOff('knowledge')" /> 2 points - No: Socially isolated and/or no social skills and/or lacks motivation to become involved
+                        <br/>
+                        <input type="radio" value="" name="skills" onclick="toggleDisplayOn('knowledge')" /> Yes
+                    </p>
+                    <div id="knowledge" style="display: none">
+                        <p>
+                            Does the client have knowledge of how to become involved in their community?
+                            <br/>
+                            <input type="radio" value="" name="knowledge" onclick="toggleDisplayOff('activelyInvolved')" /> 3 points - No: Lacks knowledge of ways to become involved
+                            <br/>
+                            <input type="radio" value="" name="knowledge" onclick="toggleDisplayOn('activelyInvolved')" /> Yes
+                        </p>
+                        <div id="activelyInvolved" style="display: none">
+                            <p>
+                                Is the client actively involved?
+                                <br/>
+                                <input type="radio" value="" name="activelyInvolved" /> 4 points - No: Some community involvement but has barriers such as transportation, childcare issues
+                                <br/>
+                                <input type="radio" value="" name="activelyInvolved" /> 5 points - Yes: Actively involved in community
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    41. Any additional comments on community involvement dimension:
+                    <br/>
+                    <textarea name="housingComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Legal</strong>
+                <p>
+                    42. Has the client had any involvement with the legal system in the last 12 months (other than minor traffic offenses)?
+                    <br/>
+                    <input type="radio" value="" name="legalInvolvement" onclick="toggleDisplayOff('legalRepresentation')" /> 5 points - No: No recent legal issues or legal issues fully resolved through legal means
+                    <br/>
+                    <input type="radio" value="" name="legalInvolvement" onclick="toggleDisplayOn('legalRepresentation')" /> Yes
+                </p>
+                <div id="legalRepresentation" style="display: none">
+                    <p>
+                        Does the client have legal representation for any legal issues and are those issues moving towards resolution or resolved?
+                        <br/>
+                        <input type="radio" value="" name="legalRepresentation" onclick="toggleDisplayOff('legalAction')" /> 4 points - Yes: Has legal representation for any legal issues and issues are moving towards resolution or fully resolved
+                        <br/>
+                        <input type="radio" value="" name="legalRepresentation" onclick="toggleDisplayOn('legalAction')" /> No
+                    </p>
+                    <div id="legalAction" style="display: none">
+                        <p>
+                            Does the client have sufficient legal representation to respond to the legal action?
+                            <br/>
+                            <input type="radio" value="" name="legalAction" onclick="toggleDisplayOff('resolve')" /> 3 points - Yes: Has assistance required to respond to legal action
+                            <br/>
+                            <input type="radio" value="" name="legalAction" onclick="toggleDisplayOn('resolve')" /> No
+                        </p>
+                        <div id="resolve" style="display: none">
+                            <p>
+                                Does the client understand how to resolve the issue, even if they do not yet have legal assistance?
+                                <br/>
+                                <input type="radio" value="" name="resolve" /> 2 points - Yes: Requires additional assistance to address legal issue
+                                <br/>
+                                <input type="radio" value="" name="resolve" /> 1 point - No: Has significant legal problems and does not understand what to do to address them
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    43. Any additional comments on legal dimension:
+                    <br/>
+                    <textarea name="housingComment" class="form-control" rows="5"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <p>
+                            <a href="#/sampleHealth"><button type="button" class="btn btn-lg btn-primary sharp" value="Back" style="width">Previous</button></a>
+                            <a href="#/dashboard" class="btn btn-lg btn-primary sharp" value="Forward" >Back to Dashboard</a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal1">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go complete</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, later</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

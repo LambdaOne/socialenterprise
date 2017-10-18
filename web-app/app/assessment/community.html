@@ -1,0 +1,181 @@
+<div ng-init="prepopulateCommunity()">
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/assessment/assessmentSidebar.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row" id="caseId">
+                <div class="col-xs-3">
+                    <h4>Case ID: {{caseId}}</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a class="generate-anchor navbar-right" style="padding-right: 5%;" ng-click="saveCommunitySupport(true)" ng-hide="currentAssessment == 'PostExit'">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="community.jsp">
+                <h1>Community Support</h1>
+                <strong>{{m.communitysupport_subheading}}</strong>
+                <p>
+                    38. {{m.communitysupport_support_q}} <a ng-click="support=''; relateWell=''; strongSupport=''; networkExpanding=''; communityChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="support" ng-model="support" ng-change="relateWell=''; strongSupport=''; networkExpanding=''; communityChange()"/>{{point1}} {{m.communitysupport_support_no}}
+                    <br/>
+                    <input type="radio" value="1" name="support" ng-model="support" ng-change="communityChange()"/> {{m.communitysupport_support_yes}}
+                </p>
+                <div id="relateWell" ng-show="support==1 && support!=''">
+                    <p>
+                        {{m.communitysupport_relateWell_q}}
+                        <br/>
+                        <input type="radio" value="0" name="relateWell" ng-model="relateWell" ng-change="strongSupport=''; networkExpanding='';" />{{point2}} {{m.communitysupport_relateWell_no}}
+                        <br/>
+                        <input type="radio" value="1" name="relateWell" ng-model="relateWell"/> {{m.communitysupport_relateWell_yes}}
+                    </p>
+                    <div id="strongSupport" ng-show="relateWell==1 && relateWell!=''">
+                        <p>
+                            {{m.communitysupport_strongSupport_q}}
+                            <br/>
+                            <input type="radio" value="0" name="strongSupport" ng-model="strongSupport" ng-change="networkExpanding='';" />{{point3}} {{m.communitysupport_strongSupport_no}}
+                            <br/>
+                            <input type="radio" value="1" name="strongSupport" ng-model="strongSupport"/> {{m.communitysupport_strongSupport_yes}}
+                        </p>
+                        <div id="networkExpanding" ng-show="strongSupport==1 && strongSupport!=''">
+                            <p>
+                                {{m.communitysupport_networkExpanding_q}}
+                                <br/>
+                                <input type="radio" value="0" name="networkExpanding" ng-model="networkExpanding"/>{{point4}} {{m.communitysupport_networkExpanding_no}}
+                                <br/>
+                                <input type="radio" value="1" name="networkExpanding" ng-model="networkExpanding"/>{{point5}} {{m.communitysupport_networkExpanding_yes}}
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    39. {{m.communitysupport_socialComment}}
+                    <br/>
+                    <textarea name="socialComment" class="form-control" rows="5" ng-model="socialComment"></textarea>
+                </p>
+                <strong>{{m.communitysupport_participation_subheading}}</strong>
+                <p>
+                    40. {{m.communitysupport_crisisMode_q}} <a ng-click="crisisMode=''; skills=''; knowledge=''; activelyInvolved=''; communityChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="crisisMode" ng-model="crisisMode" ng-change="communityChange()" ng-change="skills=''; knowledge=''; activelyInvolved='';" />{{point1}} {{m.communitysupport_crisisMode_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="crisisMode" ng-model="crisisMode" ng-change="communityChange()" /> {{m.communitysupport_crisisMode_no}}
+                </p>
+                <div id="skills" ng-show="crisisMode==0 && crisisMode!=''">
+                    <p>
+                        {{m.communitysupport_skills_q}}
+                        <br/>
+                        <input type="radio" value="0" name="skills" ng-model="skills" ng-change="knowledge=''; activelyInvolved='';" />{{point2}} {{m.communitysupport_skills_no}}
+                        <br/>
+                        <input type="radio" value="1" name="skills" ng-model="skills"/> {{m.communitysupport_skills_yes}}
+                    </p>
+                    <div id="knowledge" ng-show="skills==1 && skills!=''">
+                        <p>
+                            {{m.communitysupport_knowledge_q}}
+                            <br/>
+                            <input type="radio" value="0" name="knowledge" ng-model="knowledge" ng-change="activelyInvolved='';" />{{point3}} {{m.communitysupport_knowledge_no}}
+                            <br/>
+                            <input type="radio" value="1" name="knowledge" ng-model="knowledge"/> {{m.communitysupport_knowledge_yes}}
+                        </p>
+                        <div id="activelyInvolved" ng-show="knowledge==1 && knowledge!=''">
+                            <p>
+                                {{m.communitysupport_activelyInvolved_q}}
+                                <br/>
+                                <input type="radio" value="0" name="activelyInvolved" ng-model="activelyInvolved"/>{{point4}} {{m.communitysupport_activelyInvolved_no}}
+                                <br/>
+                                <input type="radio" value="1" name="activelyInvolved" ng-model="activelyInvolved"/>{{point5}} {{m.communitysupport_activelyInvolved_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    41. {{m.communitysupport_involvementComment}}
+                    <br/>
+                    <textarea name="involvementComment" class="form-control" rows="5" ng-model="involvementComment"></textarea>
+                </p>
+                <strong>{{m.communitysupport_legal_subheading}}</strong>
+                <p>
+                    42. {{m.communitysupport_legalInvolvement_q}} <a ng-click="legalInvolvement=''; legalRepresentation=''; legalAction=''; resolve=''; communityChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="legalInvolvement" ng-model="legalInvolvement" ng-change="legalRepresentation=''; legalAction=''; resolve=''; communityChange()"/>{{point5}} {{m.communitysupport_legalInvolvement_no}}
+                    <br/>
+                    <input type="radio" value="1" name="legalInvolvement" ng-model="legalInvolvement" ng-change="communityChange()"/> {{m.communitysupport_legalInvolvement_yes}}
+                </p>
+                <div id="legalRepresentation" ng-show="legalInvolvement==1 && legalInvolvement!=''">
+                    <p>
+                        {{m.communitysupport_legalRepresentation_q}}
+                        <br/>
+                        <input type="radio" value="1" name="legalRepresentation" ng-model="legalRepresentation" ng-change="legalAction=''; resolve='';" />{{point4}} {{m.communitysupport_legalRepresentation_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="legalRepresentation" ng-model="legalRepresentation" /> {{m.communitysupport_legalRepresentation_no}}
+                    </p>
+                    <div id="legalAction" ng-show="legalRepresentation==0 && legalRepresentation!=''">
+                        <p>
+                            {{m.communitysupport_legalAction_q}}
+                            <br/>
+                            <input type="radio" value="1" name="legalAction" ng-model="legalAction" ng-change="resolve='';"/>{{point3}} {{m.communitysupport_legalAction_yes}}
+                            <br/>
+                            <input type="radio" value="0" name="legalAction" ng-model="legalAction"/> {{m.communitysupport_legalAction_no}}
+                        </p>
+                        <div id="resolve" ng-show="legalAction==0 && legalAction!=''">
+                            <p>
+                                {{m.communitysupport_resolve_q}}
+                                <br/>
+                                <input type="radio" value="1" name="resolve" ng-model="resolve"/>{{point2}} {{m.communitysupport_resolve_yes}}
+                                <br/>
+                                <input type="radio" value="0" name="resolve" ng-model="resolve"/>{{point1}} {{m.communitysupport_resolve_no}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    43. {{m.communitysupport_legalComment}}
+                    <br/>
+                    <textarea name="legalComment" class="form-control" rows="5" ng-model="legalComment"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/health" class="btn btn-lg btn-primary sharp" value="Back">Previous</a>
+                            <button type="button" class="btn btn-lg btn-primary sharp" value="Forward" ng-click="saveCommunitySupport(false)"
+                                    ng-disabled="currentAssessment == 'PostExit'">Next</button>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal"
+                                    ng-disabled="currentAssessment == 'PostExit'">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    ng-click="continueLaterCommunity=true;saveCommunitySupport(false)">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div>
+    <header></header>
+    <div class="container">
+        <div class="jumbotron central" style="background-color:white;">
+            <h2><span class="glyphicon glyphicon-plus skinnyPlus"></span> New Assessment</h2>
+            <br>
+            <!-- <h4>Enter at least one search criteria</h4><br><br>  -->
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <input class="form-control input-lg sharp" id="caseID" name="caseID" placeholder="Case ID" type="text" required ng-model="caseID"><br>
+                    <input class="form-control input-lg sharp" id="confirmCaseID" name="confirmCaseID" placeholder="Re-enter Case ID" type="text" required ng-model="confirmCaseID">
+                    <div ng-show="caseID != confirmCaseID && confirmCaseID" class="alert alert-danger fa fa-exclamation-triangle" role="alert">
+                        Please enter the same Case ID in both fields.</div>
+                </div>
+                <!-- <div class="col-sm-5 form-group">
+                    <input class="form-control input-lg sharp" id="user" name="caseUser" placeholder="Case User" type="text" required>
+                    </div> -->
+                <div class="col-sm-2 text-center">
+                    <h3>Or</h3>
+                </div>
+                <div class="col-sm-5">
+                    <a ng-click="useFoundClient('')" class="btn btn-xxl btn-primary" style="background-color:#133B63; color:white;">Generate Case ID</a>
+                </div>
+            </div>
+            <br><br>
+            <div class="text-center inline">
+
+                <p>
+                    <a ng-click="findCaseNumber()" class="btn btn-xl btn-primary" style="background-color:#133B63; color:white;" data-toggle="modal" data-target="#myModal1"
+                       ng-disabled="!caseID || caseID != confirmCaseID">Continue</a>
+                    <a href="#/assessmenttype" class="btn btn-xl btn-default" style="color:gray;">Cancel</a>
+                </p>
+            </div>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Assessment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div ng-show="memberAlreadyExists">
+                                <h4>We found client:</h4>
+                                <p><label>Client</label> {{result.foundMemberData.displayname}} for <label>Case ID: </label> {{result.foundMemberData.string2}}</p>
+                            </div>
+                            <div ng-show="!memberAlreadyExists">
+                                <h4>We did not find any client</h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a class="btn btn-default" data-dismiss="modal" ng-show="result.foundMemberData">Use found member</a>
+                            <a class="btn btn-default" data-dismiss="modal" ng-click="useFoundClient('')">Generate New Member</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-content" ng-show="result">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create New Assessment Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-show="memberAlreadyExists">
+                        <h4>We found client:</h4>
+                        <p>Client name: <label>{{result.foundMemberData.displayname}}</label> with Case ID: <label>{{result.foundMemberData.string2}}</label></p>
+                    </div>
+                    <div ng-show="!memberAlreadyExists">
+                        <h4>We did not find any client that matches the Case Id entered. <br />
+                            Would you like to Generate A New Case Id using the number entered?</h4>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <a class="btn btn-default" data-dismiss="modal" ng-show="result.foundMemberData.displayname" ng-click="useFoundClient(result.foundMemberData.string2)">Use found member</a>
+                    <a class="btn btn-default" data-dismiss="modal" href="#/langchoice">Generate A New Case ID</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

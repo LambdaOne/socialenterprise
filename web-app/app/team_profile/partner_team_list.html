@@ -1,0 +1,30 @@
+<div ng-init="getTeamData()">
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;" ng-hide="showEditProfile">
+        <div class="row">
+            <div class="col-xs-12 col-md-8"><h2>My Team</h2></div>
+            <div class="col-xs-6 col-md-2" ng-hide="userData.memberRoleNumber == 300">
+                <h2><a ui-sref="newMember({'businessId': businessId})" class="fa fa-user-plus text-right" aria-hidden="true"></a></h2>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <a onclick="window.history.back()" class="btn btn-lg btn-info">Back to Partner List</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-3 myTeamBorder" ng-repeat="teammember in teammemberList" style="margin: 3px;">
+                <a ng-hide="userData.memberRoleNumber == 300"
+                   ui-sref="editProfile({'memberId': teammember.memberId})">
+                    <span class="glyphicon glyphicon-pencil navbar-right noMarginRight"></span>
+                </a>
+                <img data-ng-src="./images/profileImages/{{teammember.photoExists ? teammember.memberId : 'profile'}}.png" width="200" height="200" class="img-responsive img-center" alt="Responsive image">
+                <h5>Name: <label>{{teammember.firstname+" "+teammember.lastname}}</label></h5>
+                <h5>Title: <label>{{teammember.titleString}}</label></h5>
+                <h5>Email: <label>{{teammember.email}}</label></h5>
+                <h5>Location: <label>{{teammember.location}}</label></h5>
+                <!-- <span class="text-muted">Something else</span> -->
+            </div>
+        </div>
+    </div>
+    <!--<div ng-include="'app/team_profile/edit_team_member.html'" ng-show="showEditProfile"></div>-->
+
+</div>

@@ -1,0 +1,60 @@
+<div ng-init="getAllStates()">
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;">
+        <h2><span class="glyphicon glyphicon-plus skinnyPlus"></span> Partner Step 1</h2>
+        <br>
+        <!-- <h4>Enter at least one search criteria</h4><br><br>  -->
+        <form name="newPartnerForm" novalidate>
+        <div class="row" >
+            <div class="col-sm-12 form-group" ng-class="{ 'has-error' : newPartnerForm.communityName.$invalid && !newPartnerForm.communityName.$pristine }">
+                <input class="form-control input-lg sharp" id="commName" name="communityName" placeholder="Partner Name" type="text" required ng-model="partnername"><br>
+            </div>
+            <div class="col-sm-12 form-group" ng-class="{ 'has-error' : newPartnerForm.address.$invalid && !newPartnerForm.address.$pristine }">
+                <input class="form-control input-lg sharp" id="address" name="address" placeholder="Address" type="text" required ng-model="address1"><br>
+            </div>
+            <div class="col-sm-12 form-group">
+                <input class="form-control input-lg sharp" id="addressTwo" name="addressTwo" placeholder="Address Line 2" type="text" required ng-model="address2"><br>
+            </div>
+            <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newPartnerForm.city.$invalid && !newPartnerForm.city.$pristine }">
+                <input class="form-control input-lg sharp" id="city" name="city" placeholder="City" type="text" required ng-model="city"><br>
+            </div>
+            <div class="col-sm-6 form-group">
+                <select class="form-control input-lg sharp" name="state" ng-model="selectedState" required ng-options="state.code as state.label for state in states">
+                    <option value="">---Please select a state---</option>
+                </select>
+            </div>
+            <div class="col-sm-12 form-group" ng-class="{'has-error':!newPartnerForm.zip.$valid && !newPartnerForm.zip.$pristine}">
+                <input class="form-control input-lg sharp" id="zip" name="zip" placeholder="Zip Code" type="text" required ng-model="zip"><br>
+            </div>
+        </div>
+        </form>
+        <br><br>
+        <div class="text-center inline">
+            <p>
+                <button type="button" class="btn btn-xl btn-primary" ng-click="savePartnerInfo()" data-toggle="modal" data-target="#createModal1"
+                   class="btn btn-xl btn-primary" id="nextStepBtn"
+                ng-disabled="!partnername || !address1 || !city || !selectedState || !zip">Create</button>
+                <a href="#/allCityView" class="btn btn-xl btn-default" style="color:gray;">Cancel</a>
+            </p>
+        </div>
+        <!-- START Create Modal -->
+        <!-- Modal content-->
+        <div class="modal-content" ng-show="partnerSavedSuccessfully">
+            <div class="modal-header">
+                <h4 class="modal-title">Partner Added</h4>
+            </div>
+            <div class="modal-body">
+                <p>You have successfully added a new partner.</p>
+            </div>
+            <div class="modal-footer">
+                <!--"-->
+                <a href="#/dashboard" id="backToDashBtn" data-dismiss="modal">< Back to dashboard</a>&nbsp;&nbsp;&nbsp;
+                <!-- Go back to adminDash -->
+                <a ui-sref="new_caseworker({'businessId':businessId})" class="btn btn-primary" id="viewTeamBtn" data-dismiss="modal">Add Partner Member(s)</a>
+                <!-- View Team should go to a12 -->
+            </div>
+        </div>
+    </div>
+
+
+</div>

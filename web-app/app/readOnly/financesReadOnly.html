@@ -1,0 +1,279 @@
+<div>
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <!-- Emphasize READ ONLY -->
+                    <h4>READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a href="#" class="generate-anchor navbar-right" style="padding-right: 5%;">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="health.jsp">
+                <h1>Financial</h1>
+                <p>
+                    The remainder of this tool should be filled out based on <strong>self-report of the client</strong>. If the case manager disagrees with something the client has said that can be noted in the free text space at the end of each domain section.
+                </p>
+                <strong>Income</strong>
+                <p>
+                    6. Does the household have any income (including public assistance)?
+                    <br/>
+                    <input type="radio" name="income" value="" onclick="toggleDisplayOff('incomeAdequate')" /> 1 point - No: No income, basic expenses are not met
+                    <br/>
+                    <input type="radio" name="income" value="" onclick="toggleDisplayOn('incomeAdequate')" /> Yes
+                </p>
+                <div id="incomeAdequate" style="display: none">
+                    <p>
+                        Is the income adequate for meeting basic expenses (housing, childcare, transportation, food, etc.)?
+                        <br/>
+                        <input type="radio" value="" name="incomeAdequate" onclick="toggleDisplayOff('incomeSavings')" /> 2 points - No: Inadequate income and/or spontaneous or inappropriate spending
+                        <br/>
+                        <input type="radio" value="" name="incomeAdequate" onclick="toggleDisplayOn('incomeSavings')" /> Yes
+                    </p>
+                    <div id="incomeSavings" style="display: none">
+                        <p>
+                            Does income provide for savings or non-essential purchases?
+                            <br/>
+                            <input type="radio" value="" name="incomeSavings" onclick="toggleDisplayOff('incomeStable')" /> 3 points - No: Can meet basic expenses with subsidy; appropriate spending
+                            <br/>
+                            <input type="radio" value="" name="incomeSavings" onclick="toggleDisplayOn('incomeStable')" /> Yes
+                        </p>
+                        <div id="incomeStable" style="display: none">
+                            <p>
+                                Is income adequate and stable?
+                                <br/>
+                                <input type="radio" value="" name="incomeStable" /> 4 points - No: Can currently meet basic expenses and manage debt but may be temporary; there are long-term stability concerns
+                                <br/>
+                                <input type="radio" value="" name="incomeStable" /> 5 points - Yes: Income is sufficient and stable, well managed; has discretionary income and is able to save
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    7. Any additional comments on income dimension:
+                    <br/>
+                    <textarea name="incomeComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Employment</strong>
+                <p>
+                    8. Does the client have a job?
+                    <br/>
+                    <input type="radio" value="" name="job" onclick="toggleDisplayOff('jobFullTime')" /> 1 point - No: No job
+                    <br/>
+                    <input type="radio" value="" name="job" onclick="toggleDisplayOn('jobFullTime')" /> Yes
+                </p>
+                <div id="jobFullTime" style="display: none">
+                    <p>
+                        Is the job full-time?
+                        <br/>
+                        <input type="radio" value="" name="jobFullTime" onclick="toggleDisplayOff('jobAdequate')" /> 2 points - No: Temporary, part-time, or seasonal; inadequate pay; no benefits
+                        <br/>
+                        <input type="radio" value="" name="jobFullTime" onclick="toggleDisplayOn('jobAdequate')" /> Yes
+                    </p>
+                    <div id="jobAdequate" style="display: none">
+                        <p>
+                            Does the full-time job pay adequately and provide benefits?
+                            <br/>
+                            <input type="radio" value="" name="jobAdequate" onclick="toggleDisplayOff('jobPermanent')" /> 3 points - No: Employed full-time but with inadequate pay; few or no benefits
+                            <br/>
+                            <input type="radio" value="" name="jobAdequate" onclick="toggleDisplayOn('jobPermanent')" /> Yes
+                        </p>
+                        <div id="jobPermanent" style="display: none">
+                            <p>
+                                Is the full-time job permanent?
+                                <br/>
+                                <input type="radio" value="" name="jobPermanent" /> 4 points - No: Employed full-time with adequate pay and benefits
+                                <br/>
+                                <input type="radio" value="" name="jobPermanent" /> 5 points - Yes: Maintains full-time permanent employment with adequate income and benefits
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    9. Does the client have any legal history or legal issues preventing him/her from getting a job, obtaining housing, or performing another necessary activity?
+                    <br/>
+                    <input type="radio" value="" name="legalHistory" /> Yes
+                    <br/>
+                    <input type="radio" value="" name="legalHistory" /> No
+                </p>
+                <p>
+                    10. Is there an adult partner in the household (spouse or other)? If so, please answer the following questions about the other adult, not your client.
+                    <br/>
+                    <input type="radio" value="" name="adultPartner" onclick="toggleDisplayOn('adultPartnerJob')" /> Yes
+                    <br/>
+                    <input type="radio" value="" name="adultPartner" onclick="toggleDisplayOff('adultPartnerJob')" /> No
+                </p>
+                <div id="adultPartnerJob" style="display: none">
+                    <p>
+                        Does the other adult have a job?
+                        <br/>
+                        <input type="radio" value="" name="adultPartnerJob" onclick="toggleDisplayOff('adultPartnerJobFullTime')" /> 1 point - No: No job
+                        <br/>
+                        <input type="radio" value="" name="adultPartnerJob" onclick="toggleDisplayOn('adultPartnerJobFullTime')" /> Yes
+                    </p>
+                    <div id="adultPartnerJobFullTime" style="display: none">
+                        <p>
+                            Is the job full-time?
+                            <br/>
+                            <input type="radio" value="" name="adultPartnerJobFullTime" onclick="toggleDisplayOff('adultPartnerJobAdequate')" /> 2 points - No: Temporary, part-time, or seasonal; inadequate pay; no benefits
+                            <br/>
+                            <input type="radio" value="" name="adultPartnerJobFullTime" onclick="toggleDisplayOn('adultPartnerJobAdequate')" /> Yes
+                        </p>
+                        <div id="adultPartnerJobAdequate" style="display: none">
+                            <p>
+                                Does the full-time job pay adequately and provide benefits?
+                                <br/>
+                                <input type="radio" value="" name="adultPartnerJobAdequate" onclick="toggleDisplayOff('adultPartnerJobPermanent')" /> 3 points - No: Employed full-time; inadequate pay; few or no benefits
+                                <br/>
+                                <input type="radio" value="" name="adultPartnerJobAdequate" onclick="toggleDisplayOn('adultPartnerJobPermanent')" /> Yes
+                            </p>
+                            <div id="adultPartnerJobPermanent" style="display: none">
+                                <p>
+                                    Is the full-time job permanent?
+                                    <br/>
+                                    <input type="radio" value="" name="adultPartnerJobPermanent" /> 4 points - No: Employed full-time with adequate pay and benefits
+                                    <br/>
+                                    <input type="radio" value="" name="adultPartnerJobPermanent" /> 5 points - Yes: Maintains full-time permanent employment with adequate income and benefits
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Does the other adult have any legal history or legal issues preventing him/her from getting a job, obtaining housing, or performing another necessary activity?
+                        <br/>
+                        <input type="radio" value="" name="legalHistoryOtherAdult" /> Yes
+                        <br/>
+                        <input type="radio" value="" name="legalHistoryOtherAdult" /> No
+                    </p>
+                </div>
+                <p>
+                    11. Any additional comments on employment dimension:
+                    <br/>
+                    <textarea name="employmentComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Credit History</strong>
+                <p>
+                    12. Does the client have a credit history?
+                    <br/>
+                    <input type="radio" value="" name="creditHistory" onclick="toggleDisplayOff('creditAdequate')" /> 1 point - No or unsure: No credit history or does not know about credit history
+                    <br/>
+                    <input type="radio" value="" name="creditHistory" onclick="toggleDisplayOn('creditAdequate')" /> Yes
+                </p>
+                <div id="creditAdequate" style="display: none">
+                    <p>
+                        Does the client have adequate credit to do necessary activities, such as renting an apartment and/or purchasing a car?
+                        <br/>
+                        <input type="radio" value="" name="creditAdequate" onclick="toggleDisplayOff('creditJudgements')" /> 2 points - No: Poor credit rating
+                        <br/>
+                        <input type="radio" value="" name="creditAdequate" onclick="toggleDisplayOn('creditJudgements')" /> Yes
+                    </p>
+                    <div id="creditJudgements" style="display: none">
+                        <p>
+                            Does the client have any outstanding judgments, collections, or bankruptcy/foreclosures?
+                            <br/>
+                            <input type="radio" value="" name="creditJudgements" onclick="toggleDisplayOn('creditRepair')" /> Yes
+                            <br/>
+                            <input type="radio" value="" name="creditJudgements" onclick="toggleDisplayOff('creditRepair')" /> 5 points - No: Client has moderate or good credit
+                        </p>
+                        <div id="creditRepair" style="display: none">
+                            <p>
+                                Does the client have a credit repair plan?
+                                <br/>
+                                <input type="radio" value="" name="creditRepair" /> 3 points – No: Outstanding judgments or bankruptcy/foreclosure and no credit repair plan
+                                <br/>
+                                <input type="radio" value="" name="creditRepair" /> 4 points – Yes: Has a credit repair plan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    13. Any additional comments on credit history dimension:
+                    <br/>
+                    <textarea name="creditHistoryComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Debt/Savings/Assets</strong>
+                <p>
+                    14. Does the client have debt that they cannot currently make any payments on?
+                    <br/>
+                    <input type="radio" value="" name="debt" onclick="toggleDisplayOff('debtOutstanding')" /> 1 point - Yes: Client has excessive debt and an inability to pay
+                    <br/>
+                    <input type="radio" value="" name="debt" onclick="toggleDisplayOn('debtOutstanding')" /> No
+                </p>
+                <div id="debtOutstanding" style="display: none">
+                    <p>
+                        Does the client have any outstanding debts that they can only pay sporadically or wage garnishments that are unplanned?
+                        <br/>
+                        <input type="radio" value="" name="debtOutstanding" onclick="toggleDisplayOff('debtPaid')" /> 2 points - Yes: Client has sporadic debts that cannot be planned or budgeted for
+                        <br/>
+                        <input type="radio" value="" name="debtOutstanding" onclick="toggleDisplayOn('debtPaid')" /> No
+                    </p>
+                    <div id="debtPaid" style="display: none">
+                        <p>
+                            Does the client have outstanding debts that can be paid consistently or planned for?
+                            <br/>
+                            <input type="radio" value="" name="debtPaid" onclick="toggleDisplayOff('debtSaving')" /> 3 points - Yes: Client has outstanding debts but has budget or debt repayment plan in place; however client is unable save money.
+                            <br/>
+                            <input type="radio" value="" name="debtPaid" onclick="toggleDisplayOn('debtSaving')" /> No
+                        </p>
+                        <div id="debtSaving" style="display: none">
+                            <p>
+                                Is the client currently saving money and/or building assets?
+                                <br/>
+                                <input type="radio" value="" name="debtSaving" /> 4 points - No: Client has a budget that covers all debts and they have the ability to save, though are not actively doing so
+                                <br/>
+                                <input type="radio" value="" name="debtSaving" /> 5 points - Yes: Client is saving money and/or building assets
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    15. Any additional comments on debt/savings/assets dimension:
+                    <br/>
+                    <textarea name="incomeComment" class="form-control" rows="5"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/sampleDemographics"><button type="button" class="btn btn-lg btn-primary sharp" value="Back" style="width">Previous</button></a>
+                            <a href="#/sampleBasicNeeds"><button type="button" class="btn btn-lg btn-primary sharp" value="Forward" >Next</button></a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal1">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go complete</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, later</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

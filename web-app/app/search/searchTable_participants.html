@@ -1,0 +1,52 @@
+<div ng-init="showParticipantsByPartner()">
+    <header></header>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron central" style="background-color:white;">
+                <!-- <h2>Community Participants</h2><br><br> -->
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-6">
+                        <div class="col-md-1"><a href="#" class="generate-anchor">Print</a></div>
+                        <div class="col-md-1"><a href="#" class="generate-anchor">Export</a></div>
+                        <div class="col-md-1"><a href="#" class="generate-anchor">View All</a></div>
+                        <div class="col-md-1 generate-anchor">Sort by:</div>
+                        <div class="col-md-1">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle sharp" type="button" data-toggle="dropdown">Select
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Case ID</a></li>
+                                    <li><a href="#">User ID</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=".col-md-4 .col-md-offset-8" style="margin-left:15px;">
+                        <h2>Partner Participants</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Name</th>
+                                <th>User ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="participants in allParticipants">
+                                <td><a ui-sref="caseReportView({'caseId': participants.participantCaseId})">{{participants.participantCaseId}}</a></td>
+                                <td>{{participants.participantName}}</td>
+                                <td>{{participants.caseWorkerName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

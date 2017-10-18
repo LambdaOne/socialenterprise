@@ -1,0 +1,281 @@
+<div ng-init="prepopulateFinances()">
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/assessment/assessmentSidebar.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row" id="caseId">
+                <div class="col-xs-3">
+                    <h4>Case ID: {{caseId}}</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a class="generate-anchor navbar-right" style="padding-right: 5%;" ng-click="saveFinance(true)" ng-hide="currentAssessment == 'PostExit'">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post">
+                <h1>Financial</h1>
+                <p>
+                    The remainder of this tool should be filled out based on <strong>self-report of the client</strong>. If the case manager disagrees with something the client has said, then that can be noted in the free text space at the end of each domain section.
+                </p>
+                <strong>{{m.finance_income_subheading}}</strong>
+                <p>
+                    6. {{m.finance_income_q}} <a ng-click="income=''; incomeAdequate=''; incomeSavings=''; incomeStable=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" name="income" value="0" ng-model="income" ng-change="incomeAdequate=''; incomeSavings=''; incomeStable='';financesChange()"/>{{point1}} {{m.finance_income_no}}
+                    <br/>
+                    <input type="radio" name="income" value="1" ng-model="income" ng-change="financesChange()"/> {{m.finance_income_yes}}
+                </p>
+                <div id="incomeAdequate" ng-show="income==1 && income!=''">
+                    <p>
+                        {{m.finance_incomeAdequate_q}}
+                        <br/>
+                        <input type="radio" value="0" name="incomeAdequate" ng-model="incomeAdequate" ng-change="incomeSavings=''; incomeStable=''"/>{{point2}} {{m.finance_incomeAdequate_no}}
+                        <br/>
+                        <input type="radio" value="1" name="incomeAdequate" ng-model="incomeAdequate"/> {{m.finance_incomeAdequate_yes}}
+                    </p>
+                    <div id="incomeSavings" ng-show="incomeAdequate==1 && incomeAdequate!=''">
+                        <p>
+                            {{m.finance_incomeSavings_q}}
+                            <br/>
+                            <input type="radio" value="0" name="incomeSavings" ng-model="incomeSavings" ng-change="incomeStable=''"/>{{point3}} {{m.finance_incomeSavings_no}}
+                            <br/>
+                            <input type="radio" value="1" name="incomeSavings" ng-model="incomeSavings"/> {{m.finance_incomeSavings_yes}}
+                        </p>
+                        <div id="incomeStable" ng-show="incomeSavings==1 && incomeSavings!=''">
+                            <p>
+                                {{m.finance_incomeStable_q}}
+                                <br/>
+                                <input type="radio" value="0" name="incomeStable" ng-model="incomeStable"/>{{point4}} {{m.finance_incomeStable_no}}
+                                <br/>
+                                <input type="radio" value="1" name="incomeStable" ng-model="incomeStable"/>{{point5}} {{m.finance_incomeStable_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    7. {{m.finance_incomeComment}}
+                    <br/>
+                    <textarea name="incomeComment" class="form-control" rows="5" ng-model="incomeComment"></textarea>
+                </p>
+                <strong>{{m.finance_job_subheading}}</strong>
+                <p>
+                    8. {{m.finance_job_q}} <a ng-click="job=''; jobFullTime=''; jobAdequate=''; jobPermanent=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="job" ng-model="job" ng-change="jobFullTime=''; jobAdequate=''; jobPermanent=''; financesChange()"/>{{point1}} {{m.finance_job_no}}
+                    <br/>
+                    <input type="radio" value="1" name="job" ng-model="job" ng-change="financesChange()"/> {{m.finance_job_yes}}
+                </p>
+                <div id="jobFullTime" ng-show="job==1 && job!=''">
+                    <p>
+                        {{m.finance_jobFullTime_q}}
+                        <br/>
+                        <input type="radio" value="0" name="jobFullTime" ng-model="jobFullTime" ng-change="jobAdequate=''; jobPermanent='';"/>{{point2}} {{m.finance_jobFullTime_no}}
+                        <br/>
+                        <input type="radio" value="1" name="jobFullTime" ng-model="jobFullTime"/> {{m.finance_jobFullTime_yes}}
+                    </p>
+                    <div id="jobAdequate" ng-show="jobFullTime==1 && jobFullTime!=''">
+                        <p>
+                            {{m.finance_jobAdequate_q}}
+                            <br/>
+                            <input type="radio" value="0" name="jobAdequate" ng-model="jobAdequate" ng-change="jobPermanent='';"/>{{point3}} {{m.finance_jobAdequate_no}}
+                            <br/>
+                            <input type="radio" value="1" name="jobAdequate" ng-model="jobAdequate"/> {{m.finance_jobAdequate_yes}}
+                        </p>
+                        <div id="jobPermanent" ng-show="jobAdequate==1 && jobAdequate!=''">
+                            <p>
+                                {{m.finance_jobPermanent_q}}
+                                <br/>
+                                <input type="radio" value="0" name="jobPermanent" ng-model="jobPermanent"/>{{point4}} {{m.finance_jobPermanent_no}}
+                                <br/>
+                                <input type="radio" value="1" name="jobPermanent" ng-model="jobPermanent"/>{{point5}} {{m.finance_jobPermanent_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    9. {{m.finance_legalHistory_q}} <a ng-click="legalHistory=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="legalHistory" ng-model="legalHistory"/> {{m.finance_legalHistory_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="legalHistory" ng-model="legalHistory"/> {{m.finance_legalHistory_no}}
+                </p>
+                <p>
+                    10. {{m.finance_adultPartner_q}} <a ng-click="adultPartner=''; adultPartnerJob='';adultPartnerJobFullTime='';adultPartnerJobAdequate='';adultPartnerJobPermanent='';legalHistoryOtherAdult=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="adultPartner" ng-model="adultPartner" ng-change="financesChange()"/> {{m.finance_adultPartner_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="adultPartner" ng-model="adultPartner" ng-change="adultPartnerJob='';adultPartnerJobFullTime='';adultPartnerJobAdequate='';adultPartnerJobPermanent='';legalHistoryOtherAdult=''; financesChange()"/> {{m.finance_adultPartner_no}}
+                </p>
+                <div id="adultPartnerJob" ng-show="adultPartner==1 && adultPartner!=''">
+                    <p>
+                        {{m.finance_adultPartnerJob_q}}
+                        <br/>
+                        <input type="radio" value="0" name="adultPartnerJob" ng-model="adultPartnerJob" ng-change="adultPartnerJobFullTime='';adultPartnerJobAdequate='';adultPartnerJobPermanent='';" />{{point1}} {{m.finance_adultPartnerJob_no}}
+                        <br/>
+                        <input type="radio" value="1" name="adultPartnerJob" ng-model="adultPartnerJob" ng-change="legalHistoryOtherAdult='';"/> {{m.finance_adultPartnerJob_yes}}
+                    </p>
+                    <div id="adultPartnerJobFullTime" ng-show="adultPartnerJob==1 && adultPartnerJob!=''">
+                        <p>
+                            {{m.finance_adultPartnerJobFullTime_q}}
+                            <br/>
+                            <input type="radio" value="0" name="adultPartnerJobFullTime" ng-model="adultPartnerJobFullTime" ng-change="adultPartnerJobAdequate='';adultPartnerJobPermanent='';" />{{point2}} {{m.finance_adultPartnerJobFullTime_no}}
+                            <br/>
+                            <input type="radio" value="1" name="adultPartnerJobFullTime" ng-model="adultPartnerJobFullTime"/> {{m.finance_adultPartnerJobFullTime_yes}}
+                        </p>
+                        <div id="adultPartnerJobAdequate" ng-show="adultPartnerJobFullTime==1 && adultPartnerJobFullTime!=''">
+                            <p>
+                                {{m.finance_adultPartnerJobAdequate_q}}
+                                <br/>
+                                <input type="radio" value="0" name="adultPartnerJobAdequate" ng-model="adultPartnerJobAdequate" ng-change="adultPartnerJobPermanent='';" />{{point3}} {{m.finance_adultPartnerJobAdequate_no}}
+                                <br/>
+                                <input type="radio" value="1" name="adultPartnerJobAdequate" ng-model="adultPartnerJobAdequate"/> {{m.finance_adultPartnerJobAdequate_yes}}
+                            </p>
+                            <div id="adultPartnerJobPermanent" ng-show="adultPartnerJobAdequate==1 && adultPartnerJobAdequate!=''">
+                                <p>
+                                    {{m.finance_adultPartnerJobPermanent_q}}
+                                    <br/>
+                                    <input type="radio" value="0" name="adultPartnerJobPermanent" ng-model="adultPartnerJobPermanent" />{{point4}} {{m.finance_adultPartnerJobPermanent_no}}
+                                    <br/>
+                                    <input type="radio" value="1" name="adultPartnerJobPermanent" ng-model="adultPartnerJobPermanent"/>{{point5}} {{m.finance_adultPartnerJobPermanent_yes}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p ng-show="adultPartner==1 && adultPartner!=''">
+                        {{m.finance_legalHistoryOtherAdult_q}}
+                        <br/>
+                        <input type="radio" value="1" name="legalHistoryOtherAdult" ng-model="legalHistoryOtherAdult"/> {{m.finance_legalHistoryOtherAdult_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="legalHistoryOtherAdult" ng-model="legalHistoryOtherAdult"/> {{m.finance_legalHistoryOtherAdult_no}}
+                    </p>
+                </div>
+                <p>
+                    11. {{m.finance_employmentComment}}
+                    <br/>
+                    <textarea name="employmentComment" class="form-control" rows="5" ng-model="employmentComment"></textarea>
+                </p>
+                <strong>{{m.finance_creditHistory_subheading}}</strong>
+                <p>
+                    12. {{m.finance_creditHistory_q}} <a ng-click="creditHistory='';creditAdequate='';creditJudgements='';creditRepair=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="creditHistory" ng-model="creditHistory" ng-change="creditAdequate='';creditJudgements='';creditRepair=''; financesChange()"/>{{point1}} {{m.finance_creditHistory_no}}
+                    <br/>
+                    <input type="radio" value="1" name="creditHistory" ng-model="creditHistory" ng-change="financesChange()"/> {{m.finance_creditHistory_yes}}
+                </p>
+                <div id="creditAdequate" ng-show="creditHistory==1 && creditHistory!=''">
+                    <p>
+                        {{m.finance_creditAdequate_q}}
+                        <br/>
+                        <input type="radio" value="0" name="creditAdequate" ng-model="creditAdequate" ng-change="creditJudgements='';creditRepair='';" />{{point2}} {{m.finance_creditAdequate_no}}
+                        <br/>
+                        <input type="radio" value="1" name="creditAdequate" ng-model="creditAdequate"/> {{m.finance_creditAdequate_yes}}
+                    </p>
+                    <div id="creditJudgements" ng-show="creditAdequate==1 && creditAdequate!=''">
+                        <p>
+                            {{m.finance_creditJudgements_q}}
+                            <br/>
+                            <input type="radio" value="0" name="creditJudgements" ng-model="creditJudgements" ng-change="creditRepair='';"/>{{point5}} {{m.finance_creditJudgements_no}}
+                            <br/>
+                            <input type="radio" value="1" name="creditJudgements" ng-model="creditJudgements"/> {{m.finance_creditJudgements_yes}}
+                            
+                        </p>
+                        <div id="creditRepair" ng-show="creditJudgements==1 && creditJudgements!=''">
+                            <p>
+                                {{m.finance_creditRepair_q}}
+                                <br/>
+                                <input type="radio" value="0" name="creditRepair" ng-model="creditRepair"/>{{point3}} {{m.finance_creditRepair_no}}
+                                <br/>
+                                <input type="radio" value="1" name="creditRepair" ng-model="creditRepair"/>{{point4}} {{m.finance_creditRepair_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    13. {{m.finance_creditHistoryComment}}
+                    <br/>
+                    <textarea name="creditHistoryComment" class="form-control" rows="5" ng-model="creditHistoryComment"></textarea>
+                </p>
+                <strong>{{m.finance_debt_subheading}}</strong>
+                <p>
+                    14. {{m.finance_debt_q}} <a ng-click="debt=''; debtOutstanding=''; debtPaid=''; debtSaving=''; financesChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="debt" ng-model="debt" ng-change="debtOutstanding=''; debtPaid=''; debtSaving=''; financesChange()"/>{{point1}} {{m.finance_debt_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="debt" ng-model="debt" ng-change="financesChange()"/> {{m.finance_debt_no}}
+                </p>
+                <div id="debtOutstanding" ng-show="debt==0 && debt!='' " >
+                    <p>
+                        {{m.finance_debtOutstanding_q}}
+                        <br/>
+                        <input type="radio" value="1" name="debtOutstanding" ng-model="debtOutstanding" ng-change="debtPaid=''; debtSaving='';" />{{point2}} {{m.finance_debtOutstanding_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="debtOutstanding" ng-model="debtOutstanding"/> {{m.finance_debtOutstanding_no}}
+                    </p>
+                    <div id="debtPaid" ng-show="debtOutstanding==0 && debtOutstanding!='' ">
+                        <p>
+                            {{m.finance_debtPaid_q}}
+                            <br/>
+                            <input type="radio" value="1" name="debtPaid" ng-model="debtPaid" ng-change="debtSaving='';" />{{point3}} {{m.finance_debtPaid_yes}}
+                            <br/>
+                            <input type="radio" value="0" name="debtPaid" ng-model="debtPaid"/> {{m.finance_debtPaid_no}}
+                        </p>
+                        <div id="debtSaving" ng-show="debtPaid==0 && debtPaid!='' ">
+                            <p>
+                                {{m.finance_debtSaving_q}}
+                                <br/>
+                                <input type="radio" value="0" name="debtSaving" ng-model="debtSaving"/>{{point4}} {{m.finance_debtSaving_no}}
+                                <br/>
+                                <input type="radio" value="1" name="debtSaving" ng-model="debtSaving"/>{{point5}} {{m.finance_debtSaving_yes}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    15. {{m.finance_debtComment}}
+                    <br/>
+                    <textarea name="debtComment" class="form-control" rows="5" ng-model="debtComment"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                             <!-- <a href="#/demographics"><button type="button" class="btn btn-lg btn-primary sharp" value="Back" style="width">Previous</button></a>  -->
+                            <a ng-click="saveFinance(false)" class="btn btn-lg btn-primary sharp" value="Forward" ng-disabled="currentAssessment == 'PostExit'">Next</a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal"
+                                    ng-disabled="currentAssessment == 'PostExit'">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    ng-click="continueLaterFinances=true;saveFinance(false)">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>        

@@ -1,0 +1,51 @@
+<div ><!-- ng-init="validateSession()" -->
+    <header></header>
+    <div class="row" >
+        <div ng-include="'app/includes/dash_sidebar.html'" ></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <!-- large "buttons" -->
+            <div class="row">
+                <div class="col-md-5 col-lg-5" style="margin-right: 5px;" ng-hide="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600">
+                    <a href="#/assessmenttype" ng-click="validateSession()">
+                    <img class="img-responsive bigDashBtn1 leftColBtns img-center" src="./images/checklistBtn.png" alt="logo">
+                    </a>
+                </div>
+                <!-- Report Sections -->
+                <div class="col-md-5" style="margin-right:5px;" ng-show="userData.memberRoleNumber == 300 || userData.memberRoleNumber == 400">
+                    <a ui-sref="reportsPmCM({'partnerId':userData.businessId})">
+                    <img class="img-responsive bigDashBtn1 leftColBtns img-center" src="./images/barchartBtn.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-md-5" style="margin-right:5px;" ng-show="userData.memberRoleNumber == 600">
+                    <a ui-sref="reportsDirector({'communityId':userData.businessId})">
+                    <img class="img-responsive bigDashBtn1 leftColBtns img-center" src="./images/barchartBtn.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-md-5" style="margin-right:5px;" ng-show="userData.memberRoleNumber == 500">
+                    <a ui-sref="reportsAdmin()">
+                    <img class="img-responsive bigDashBtn1 leftColBtns img-center" src="./images/barchartBtn.png" alt="logo">
+                    </a>
+                </div>
+                <!-- -->
+                <div class="col-md-5 col-lg-5" style="margin-right: 5px;">
+                    <a href="#/search" ng-click="validateSession()">
+                    <img class="img-responsive bigDashBtn1 img-center" src="./images/searchBtn.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-md-5 col-lg-5" style="margin-right: 5px;"
+                     ng-hide="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600">
+                    <a ng-click="gotoTeam()">
+                    <img class="img-responsive bigDashBtn1 img-center" src="./images/teamAvatarsBtn.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-sm-10" ng-show="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600"></div>
+                <div class="col-sm-10" style="margin-top: 5%; margin-right:5px;"
+                     ng-show="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600">
+                    <a href="#/allCityView" ng-click="validateSession()" >
+                        <img class="img-responsive img-center" src="./images/ourCommBtn.png" alt="search" >
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

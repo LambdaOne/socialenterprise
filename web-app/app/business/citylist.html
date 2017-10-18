@@ -1,0 +1,46 @@
+<div ng-init="allCityView()">
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;" >
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+                <h2 style="margin-top: 0 !important;">Communities
+                    <a id="addPartnerLink" href="#/newCommunity" title="Add a partner/organisation"
+                       class="glyphicon glyphicon-plus" style="font-size: 80%;"
+                       ng-hide="userData.memberRoleNumber == 600">
+                    </a>
+                </h2>
+            </div>
+            <!--<div class="col-xs-12 col-md-1" style="padding-bottom:2%;"><a href="#" class="generate-anchor">View All</a></div>-->
+            <div class="col-xs-12 col-md-3 text-right" style="padding-bottom: 20px;">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" placeholder="Search Cities" ng-model="citySearch">
+                        <span class="input-group-addon">
+                        <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Plus icon should take to A15/Partner Step 1 -->
+            <!--<div class="col-xs-12 col-md-2" style="padding-bottom:2%;">
+                <a id="addPartnerLink" href="#/newCommunity" title="Add a partner/organisation" ng-hide="userData.memberRoleNumber == 600">
+                    <span class="glyphicon glyphicon-plus skinnyPlus" style="font-size: 250%;"></span>
+                </a>
+            </div>-->
+            <!-- </div> -->
+            <!--  <div class="col-xs-12 col-md-1" style="padding-bottom:2%;"><a id="popoverOption" data-content="Add a city" rel="popover" data-placement="bottom" href="#"><span class="glyphicon glyphicon-plus skinnyPlus" style="font-size: 250%;"></span></a></div>  -->
+        </div>
+        <br>
+        <div class="row row-centered" ng-show="cityViewEnabled">
+            <div class="col-xs-12 col-sm-3 col-centered btn" ng-repeat="cityName in allCities | orderBy: cityName |filter: citySearch"
+                 style="border:solid 1px #CCCCCC; margin:2px;overflow: hidden"
+                 ng-click="getAllOrgsByCity(cityName)">
+                 <h4>{{cityName}}</h4>
+            </div>
+        </div>
+    </div>
+    <!--<div ng-include="'app/reports/searchTable_partners.html'" ng-show="orgViewEnabled" ></div>-->
+<!--    <div ng-include="'app/reporeport_national_community_assessment.htmlhtml'" ng-show="orgReportViewEnabled" ></div>-->
+</div>

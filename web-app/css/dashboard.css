@@ -1,0 +1,341 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+
+
+
+ul li {
+  color: white;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 992px) {
+ .rightColBtns {
+    padding-left: 10%;
+  }
+}
+
+.skinnyPlus {
+  font-family:sans-serif;
+  font-size: 300%;
+}
+
+/*remove rounded corners from buttons*/
+.btn.sharp {
+  border-radius: 0;
+}
+
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  /*border: 0;*/
+  border-color:transparent;
+  }
+
+
+
+/*Background color of top nav currently set to white*/
+.navbar-inverse {
+  background-color: #fff;
+}
+
+/*Navbar items colored white*/
+.navbar-nav li a {
+  color:white !important;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+  border-top-style: none !important;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: white;
+  color: #133B63;
+   }
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+
+.main .page-header {
+  margin-top: 0;
+}
+
+/* shadow and edges for jumbotrons */
+.central {
+    /*margin-bottom: 25px;*/
+    background-color: white;
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding-left: 8px;
+
+}
+
+/*darker blue for headings inside jumbotrons */
+.jumbotron h2, h3 {
+  color: #133B63;
+}
+
+/*increase button size*/
+.btn-xl {
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    color:#133B63;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/*for extra wide buttons*/
+.btn-xxl {
+    width: 220px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    color:#133B63;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+    box-shadow: 10px 10px 5px grey;
+    border-radius: 25px;
+
+}
+
+/*Maintain image sizes for dashboard "buttons"*/
+.bigDashBtn {
+  min-width: 396px;
+  min-height: 259px;
+
+}
+
+ul li {
+  color: white;
+}
+
+/*for white pipe separator between alert icon and Signout */
+.btn-separator:after {
+    content: ' ';
+    display: block;
+    float: left;
+    background: white;
+    margin-top: 5px;
+    margin: 5 10px;
+    height: 34px;
+    width: 1px;
+}
+
+.btn-fatty {
+  min-height: 240px;
+  text-align: center !important;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.core-jumbo {
+  background-color: white;
+  min-height: 200px;
+  min-width: 100px;
+   box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+ }
+
+/*.navbar-brand {
+  height: auto;
+  width: auto;
+}*/
+
+.navbar-toggle {
+  background-color: #3694BF;
+
+}
+
+.button.navbar-toggle.collapsed {
+  background-color: #3694BF;
+  border-style: none;
+}
+
+/*Increased size for dashboard left nav icons*/
+
+.largerIcon {
+   font-size: 175%;
+}
+.glyphicon.glyphicon-plus {
+   font-size: 175%;
+}
+
+.sidebar .glyphicon.glyphicon-bell {
+  font-size: 175%;
+}
+
+.glyphicon.glyphicon-list-alt {
+  font-size: 175%;
+}
+
+
+
+.top-right {
+  background-color: #3694BF;
+}
+
+/* On hover color for glyphicons */
+ul > li > a:hover > .glyphicon {
+  color:orange;
+}
+
+/* control size of home glyphicon when it appears in toggle menu */
+.glyphicon-home.dash-home {
+  font-size: 100%;
+}
+
+/* control size of plus glyphicon when it appears in toggle menu */
+.glyphicon-plus.dash-home {
+  font-size: 100%;
+}
+
+/* button color on hover */
+.btn-primary:hover {
+  background-color:gray !important;
+}
+
+/*TESTING color change for toggle button */
+
+.navbar-custom {
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 0;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+    color: #FFF;
+    background-color: blue;
+}
+
+.navbar-custom .navbar-text {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-toggle {
+    border-color: #133B63;
+}
+
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color: #133B63;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+/*END TESTING */
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<ul class="nav nav-pills nav-stacked">
+    <li>
+        <a class="btn-primary btn-demographics" ui-sref="assessment_demographics()" style="margin-left: 40px;">Demographics</a></li>
+    <!-- CHECKMARK icon when a section is complete - glyphicon glyphicon-ok -->
+    <li>
+        <a class="btn-primary btn-finance" ui-sref="assessment_finances()"
+           ng-class="currentPage ==='finances' ? 'assessmentActive' : 'assessmentInActive'" >
+            <span>Finances</span><br>
+            <h1>
+                <span count-to="{{$parent.financesPercent || 0}}" duration="1" count-from="{{$parent.oldFinValue}}" />%
+            </h1>
+        </a>
+    </li>
+    <li>
+        <a class="btn-primary btn-orange" ui-sref="assessment_basicneeds()"
+           ng-class="currentPage ==='basicneeds'? 'assessmentActive' : 'assessmentInActive'">
+            <span>Basic Needs</span><br>
+            <h1>
+                <span count-to="{{$parent.basicneedsPercent || 0}}" duration="1" count-from="{{$parent.oldBasValue}}" />%
+            </h1>
+        </a>
+    </li>
+    <li>
+        <a class="btn-primary btn-education" ui-sref="assessment_education()"
+           ng-class="currentPage ==='education'? 'assessmentActive' : 'assessmentInActive'">
+            <span>Education</span><br>
+            <h1>
+                <span count-to="{{educationPercent || 0}}" duration="1" count-from="{{oldEduValue}}" />%
+            </h1>
+        </a>
+    </li>
+    <li>
+        <a class="btn-primary btn-lime" ui-sref="assessment_health()"
+           ng-class="currentPage ==='health'? 'assessmentActive' : 'assessmentInActive'">
+            <span>Health</span><br>
+            <h1>
+                <span count-to="{{healthPercent || 0}}" duration="1" count-from="{{oldHeaValue}}" />%
+            </h1>
+        </a>
+    </li>
+    <li>
+        <a class="btn-primary btn-community" ui-sref="assessment_community()"
+           ng-class="currentPage ==='community'? 'assessmentActive' : 'assessmentInActive'">
+            <span>Community Support</span><br>
+            <h1>
+                <span count-to="{{communityPercent || 0}}" duration="1" count-from="{{oldValue}}" />%
+            </h1>
+        </a>
+    </li>
+    <!-- <li><a href="#"></a></li> -->
+</ul>

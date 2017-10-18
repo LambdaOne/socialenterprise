@@ -1,0 +1,93 @@
+<div>
+    <header></header>
+    <div class="jumbotron central" name="partnerMemberForm" style="background-color:white;">
+        <h2><span class="glyphicon glyphicon-plus skinnyPlus"></span> Partner Step 2</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <fieldset data-ng-repeat="pmember in partnerMembers" class="rounded-borders">
+                    <div id="section-{{$index}}" ng-class="{'collapse' : !$first }">
+                        Member {{$index+1}}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input class="form-control input-lg sharp" id="fname{{$index}}" ng-model="pmember.fname" name="fname{{$index}}"
+                                       placeholder="Member First Name" type="text" required><br>
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control input-lg sharp" id="lname{{$index}}" ng-model="pmember.lname" name="lname{{$index}}"
+                                       placeholder="Member Last Name" type="text" required><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <select class="form-control input-lg sharp" id="title{{$index}}" ng-model="pmember.title" name="title{{$index}}">
+                                    <option value="500" ng-show="userData.memberRoleNumber == 500">Administrator</option>
+                                    <option value="600">Director</option>
+                                </select><br>
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control input-lg sharp" ng-model="pmember.email" id="email{{$index}}" name="email{{$index}}"
+                                       placeholder="Email will serve as userid." type="email" required><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input class="form-control input-lg sharp" id="pwd{{$index}}" ng-model="pmember.pwd" name="pwd{{$index}}"
+                                       placeholder="Password" type="password" required><br>
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control input-lg sharp" id="confirmpwd{{$index}}" ng-model="pmember.confirmpwd"
+                                       name="confirmpwd{{$index}}"
+                                       placeholder="Re-enter password" type="password" required><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3" data-toggle="modal" data-target="#imgCropModal"
+                                 ng-click="setCurrentSection($index)" style="cursor: pointer;" ng-show="false">
+                                <img class="croppedImg" ng-src="{{myCroppedImage}}" result-image-size=""/>
+                                <h5>Upload Image</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <label><input type="checkbox" value="" id="allowNonMember{{$index}}" ng-model="pmember.allowNonMember"
+                                              name="allowNonMember{{$index}}"> Allow Non-Siemer</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- <p>Click on the button to toggle between showing and hiding content.</p> -->
+                <button type="button" class="btn btn-default sharp addfields" data-toggle="collapse"
+                        ng-click="addNewPartnerMember()" data-target="#section-{{partnerMembers.length-1}}">
+                    <span class="glyphicon glyphicon-plus skinnyPlus"></span> Add another User
+                </button>
+                <!--<div id="choicesDisplay">{{partnerMembers}}</div>-->
+                <!-- </div> -->
+                <div class="text-center inline">
+                    <p>
+                        <a type="button" class="btn btn-xl btn-primary" style="background-color:#133B63; color:white;" ng-click="savePartnerMembers()">Create</a>
+                        <a href="#/allCityView" class="btn btn-xl btn-default" style="color:gray;">Cancel</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- START Create Modal -->
+        <!-- Modal content-->
+        <div class="modal-content" ng-show="partnerMembersSavedSuccessfully">
+            <div class="modal-header">
+                <h4 class="modal-title">Partner Members Added</h4>
+            </div>
+            <div class="modal-body">
+                <p>You have successfully added team member(s).</p>
+            </div>
+            <div class="modal-footer">
+                <!--"-->
+                <a href="#/dashboard" id="backToDashBtn" data-dismiss="modal">< Back to dashboard</a>&nbsp;&nbsp;&nbsp;
+                <!-- Go back to adminDash -->
+                <a ui-sref="teamView({'businessId': businessId})" class="btn btn-primary" id="viewTeamBtn">View Team</a>
+                <!-- View Team should go to a12 -->
+            </div>
+        </div>
+    </div>
+</div>

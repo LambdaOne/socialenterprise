@@ -1,0 +1,147 @@
+<div>
+    <header></header>
+    <!-- <h3>Vertical Pills</h3> -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h4>READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a href="#" class="generate-anchor navbar-right" style="padding-right: 5%;">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="education.jsp">
+                <h1>Education</h1>
+                <strong>Children's Education</strong>
+                <p>
+                    26. Does the client have any school-age children?
+                    <br/>
+                    <input type="radio" value="" name="children" onclick="toggleDisplayOff('childrenEnrolled')" /> No (N/A)
+                    <br/>
+                    <input type="radio" value="" name="children" onclick="toggleDisplayOn('childrenEnrolled')" /> Yes
+                </p>
+                <div id="childrenEnrolled" style="display: none">
+                    <p>
+                        Are all eligible children enrolled in school (or being homeschooled)?
+                        <br/>
+                        <input type="radio" value="" name="childrenEnrolled" onclick="toggleDisplayOff('childrenAttending')" /> 1 point - No: At least one eligible child is not enrolled in school
+                        <br/>
+                        <input type="radio" value="" name="childrenEnrolled" onclick="toggleDisplayOn('childrenAttending')" /> Yes
+                    </p>
+                    <div id="childrenAttending" style="display: none">
+                        <p>
+                            Are all enrolled children attending classes?
+                            <br/>
+                            <input type="radio" value="" name="childrenAttending" onclick="toggleDisplayOff('childrenMove')" /> 2 points - No: At least one enrolled child is not attending classes at all
+                            <br/>
+                            <input type="radio" value="" name="childrenAttending" onclick="toggleDisplayOn('childrenMove')" /> Yes
+                        </p>
+                        <div id="childrenMove" style="display: none">
+                            <p>
+                                Are all enrolled children attending classes at-least occasionally (e.g. not daily, but sometimes).  (Answer <span style="font-weight:bold;">&#34;NO&#34;</span> if any school-age child moved to a different school for any disruptive/unplanned reason)
+                                <br/>
+                                <input type="radio" value="" name="childrenMove" onclick="toggleDisplayOff('childrenAccess')" /> 3 points – No: Child(ren) is/are enrolled in school, are attending infrequently, or  have had disruptive move(s)
+                                <br/>
+                                <input type="radio" value="" name="childrenMove" onclick="toggleDisplayOn('childrenAccess')" /> Yes
+                            </p>
+                            <div id="childrenAccess" style="display: none">
+                                <p>
+                                    Are all enrolled children attending class regularly and accessing any needed educational support services?
+                                    <br/>
+                                    <input type="radio" value="" name="childrenAccess" /> 4 points - No: Enrolled children are attending classes most of the time
+                                    <br/>
+                                    <input type="radio" value="" name="childrenAccess" /> 5 points - Yes: Enrolled children are attending classes always or almost always
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    27. Any additional comments on children's education dimension:
+                    <br/>
+                    <textarea name="housingComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Adult Education</strong>
+                <p>
+                    28. Does the client have the literacy skills to function effectively in society?
+                    <br/>
+                    <input type="radio" value="" name="food" onclick="toggleDisplayOff('diploma')" /> 1 point - No: Requires further education/literacy skills
+                    <br/>
+                    <input type="radio" value="" name="food" onclick="toggleDisplayOn('diploma')" /> Yes
+                </p>
+                <div id="diploma" style="display: none">
+                    <p>
+                        Does the client have a high school diploma or GED?
+                        <br/>
+                        <input type="radio" value="" name="diploma" onclick="toggleDisplayOff('educationTraining')" /> 2 points - No: No high school diploma or GED
+                        <br/>
+                        <input type="radio" value="" name="diploma" onclick="toggleDisplayOn('educationTraining')" /> Yes
+                    </p>
+                    <div id="educationTraining" style="display: none">
+                        <p>
+                            Has the client begun any additional education/training needed to become employable?
+                            <br/>
+                            <input type="radio" value="" name="educationTraining" onclick="toggleDisplayOff('educationComplete')" /> 3 points - No: Needs additional education/training to improve employment situation
+                            <br/>
+                            <input type="radio" value="" name="educationTraining" onclick="toggleDisplayOn('educationComplete')" /> Yes or n/a
+                        </p>
+                        <div id="educationComplete" style="display: none">
+                            <p>
+                                Has the client completed education/training needed to become employable?
+                                <br/>
+                                <input type="radio" value="" name="educationComplete" /> 4 points - No: Needs to complete additional education/training
+                                <br/>
+                                <input type="radio" value="" name="educationComplete" /> 5 points - Yes or n/a: Has completed any education/training needed to become employable. No literacy problems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    29. Any additional comments on adult education dimension:
+                    <br/>
+                    <textarea name="educationComment" class="form-control" rows="5"></textarea>
+                </p>
+                <!-- Bottom right buttons -->
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/sampleBasicNeeds"><button type="button" class="btn btn-lg btn-primary sharp">Previous</button></a>
+                            <a href="#/sampleHealth"><button type="button" class="btn btn-lg btn-primary sharp">Next</button></a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal1">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go complete</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, later</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

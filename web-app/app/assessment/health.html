@@ -1,0 +1,222 @@
+ <div ng-init="prepopulateHealth()">
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/assessment/assessmentSidebar.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row" id="caseId">
+                <div class="col-xs-3">
+                    <h4>Case ID: {{caseId}}</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a class="generate-anchor navbar-right" style="padding-right: 5%;" ng-click="saveHealth(true)" ng-hide="currentAssessment == 'PostExit'">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post">
+                <h1>Health-related</h1>
+                <strong>{{m.health_subheading}}</strong>
+                <p>
+                    30. {{m.health_medicalCoverage_q}} <a ng-click="medicalCoverage=''; immediateHealthNeed=''; unsubsidizedHealthPlan=''; insuranceAffordable=''; healthChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="0" name="medicalCoverage" ng-model="medicalCoverage" ng-change="unsubsidizedHealthPlan=''; insuranceAffordable=''; healthChange()"/> {{m.health_medicalCoverage_no}}
+                    <br/>
+                    <input type="radio" value="1" name="medicalCoverage" ng-model="medicalCoverage" ng-change="immediateHealthNeed=''; healthChange()"/> {{m.health_medicalCoverage_yes}}
+                </p>
+                <div id="immediateHealthNeed" ng-show="medicalCoverage==0 && medicalCoverage!=''">
+                    <p>
+                        {{m.health_immediateHealthNeed_q}}
+                        <br/>
+                        <input type="radio" value="1" name="immediateHealthNeed" ng-model="immediateHealthNeed" />{{point1}} {{m.health_immediateHealthNeed_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="immediateHealthNeed" ng-model="immediateHealthNeed" />{{point2}} {{m.health_immediateHealthNeed_no}}
+                    </p>
+                </div>
+                <div id="unsubsidizedHealthPlan" ng-show="medicalCoverage==1 && medicalCoverage!=''">
+                    <p>
+                        {{m.health_unsubsidizedHealthPlan_q}}
+                        <br/>
+                        <input type="radio" value="0" name="unsubsidizedHealthPlan" ng-model="unsubsidizedHealthPlan" ng-change="insuranceAffordable='';"/>{{point3}} {{m.health_unsubsidizedHealthPlan_no}}
+                        <br/>
+                        <input type="radio" value="1" name="unsubsidizedHealthPlan" ng-model="unsubsidizedHealthPlan"/> {{m.health_unsubsidizedHealthPlan_yes}}
+                    </p>
+                    <div id="insuranceAffordable" ng-show="unsubsidizedHealthPlan==1 && unsubsidizedHealthPlan!=''">
+                        <p>
+                            {{m.health_insuranceAffordable_q}}
+                            <br/>
+                            <input type="radio" value="0" name="insuranceAffordable" ng-model="insuranceAffordable"/>{{point4}} {{m.health_insuranceAffordable_no}}
+                            <br/>
+                            <input type="radio" value="1" name="insuranceAffordable" ng-model="insuranceAffordable"/>{{point5}} {{m.health_insuranceAffordable_yes}}
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    31. {{m.health_basicHealthComment}}
+                    <br/>
+                    <textarea name="basicHealthComment" class="form-control" rows="5" ng-model="basicHealthComment"></textarea>
+                </p>
+                <strong>{{m.health_mental_subheading}}</strong>
+                <p>
+                    32. {{m.health_untreatedMental_q}} <a ng-click="untreatedMental=''; mentalDanger=''; mentalDifficulty=''; mentalTreatment=''; healthChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="untreatedMental" ng-model="untreatedMental" ng-change="mentalDifficulty=''; mentalTreatment=''; healthChange()"/> {{m.health_untreatedMental_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="untreatedMental" ng-model="untreatedMental" ng-change="mentalDanger=''; healthChange()"/> {{m.health_untreatedMental_no}}
+                </p>
+                <div id="mentalDanger" ng-show="untreatedMental==1 && untreatedMental!=''">
+                    <p>
+                        {{m.health_mentalDanger_q}}
+                        <br/>
+                        <input type="radio" value="1" name="mentalDanger" ng-model="mentalDanger"/>{{point1}} {{m.health_mentalDanger_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="mentalDanger" ng-model="mentalDanger"/>{{point2}} {{m.health_mentalDanger_no}}
+                    </p>
+                </div>
+                <div id="mentalDifficulty" ng-show="untreatedMental==0 && untreatedMental!=''">
+                    <p>
+                        {{m.health_mentalDifficulty_q}}
+                        <br/>
+                        <input type="radio" value="1" name="mentalDifficulty" ng-model="mentalDifficulty" ng-change="mentalTreatment='';" />{{point3}} {{m.health_mentalDifficulty_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="mentalDifficulty" ng-model="mentalDifficulty"/> {{m.health_mentalDifficulty_no}}
+                    </p>
+                    <div id="mentalTreatment" ng-show="mentalDifficulty==0 && mentalDifficulty!=''">
+                        <p>
+                            {{m.health_mentalTreatment_q}}
+                            <br/>
+                            <input type="radio" value="1" name="mentalTreatment" ng-model="mentalTreatment"/>{{point4}} {{m.health_mentalTreatment_yes}}
+                            <br/>
+                            <input type="radio" value="0" name="mentalTreatment" ng-model="mentalTreatment"/>{{point5}} {{m.health_mentalTreatment_no}}
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    33. {{m.health_mentalHealthComment}}
+                    <br/>
+                    <textarea name="mentalHealthComment" class="form-control" rows="5" ng-model="mentalHealthComment"></textarea>
+                </p>
+                <strong>{{m.health_substance_subheading}}</strong>
+                <p>
+                    34. {{m.health_substanceDependent_q}} <a ng-click="substanceDependent=''; substanceRehab=''; substanceRecurrent=''; substanceAbuse=''; healthChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="substanceDependent" ng-model="substanceDependent" ng-change="substanceRecurrent=''; substanceAbuse=''; healthChange()"/> {{m.health_substanceDependent_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="substanceDependent" ng-model="substanceDependent" ng-change="substanceRehab=''; healthChange()"/> {{m.health_substanceDependent_no}}
+                </p>
+                <div id="substanceRehab" ng-show="substanceDependent==1 && substanceDependent!=''">
+                    <p>
+                        {{m.health_substanceRehab_q}}
+                        <br/>
+                        <input type="radio" value="1" name="substanceRehab" ng-model="substanceRehab"/>{{point1}} {{m.health_substanceRehab_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="substanceRehab" ng-model="substanceRehab"/>{{point2}} {{m.health_substanceRehab_no}}
+                    </p>
+                </div>
+                <div id="substanceRecurrent" ng-show="substanceDependent==0 && substanceDependent!=''">
+                    <p>
+                        {{m.health_substanceRecurrent_q}}
+                        <br/>
+                        <input type="radio" value="1" name="substanceRecurrent" ng-model="substanceRecurrent" ng-change="substanceAbuse='';" /> {{point3}} {{m.health_substanceRecurrent_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="substanceRecurrent" ng-model="substanceRecurrent"/> {{m.health_substanceRecurrent_no}}
+                    </p>
+                    <div id="substanceAbuse" ng-show="substanceRecurrent==0 && substanceRecurrent!=''">
+                        <p>
+                            {{m.health_substanceAbuse_q}}
+                            <br/>
+                            <input type="radio" value="1" name="substanceAbuse" ng-model="substanceAbuse"/>{{point4}} {{m.health_substanceAbuse_yes}}
+                            <br/>
+                            <input type="radio" value="0" name="substanceAbuse" ng-model="substanceAbuse"/>{{point5}} {{m.health_substanceAbuse_no}}
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    35. {{m.health_substanceAbuseComment}}
+                    <br/>
+                    <textarea name="substanceAbuseComment" class="form-control" rows="5" ng-model="substanceAbuseComment"></textarea>
+                </p>
+                <strong>{{m.health_disabilities_subheading}}</strong>
+                <p>
+                    36. {{m.health_disabilities_q}} <a ng-click="disabilities=''; severeSymptoms=''; disruptDaily=''; chronicSymptoms=''; healthChange()">Clear</a>
+                    <br/>
+                    <input type="radio" value="1" name="disabilities" ng-model="disabilities" ng-change="disruptDaily=''; chronicSymptoms=''; healthChange()"/> {{m.health_disabilities_yes}}
+                    <br/>
+                    <input type="radio" value="0" name="disabilities" ng-model="disabilities" ng-change="severeSymptoms=''; healthChange()"/> {{m.health_disabilities_no}}
+                </p>
+                <div id="severeSymptoms" ng-show="disabilities==1 && disabilities!=''">
+                    <p>
+                        {{m.health_severeSymptoms_q}}
+                        <br/>
+                        <input type="radio" value="1" name="severeSymptoms" ng-model="severeSymptoms"/>{{point1}} {{m.health_severeSymptoms_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="severeSymptoms" ng-model="severeSymptoms"/>{{point2}} {{m.health_severeSymptoms_no}}
+                    </p>
+                </div>
+                <div id="disruptDaily" ng-show="disabilities==0 && disabilities!=''">
+                    <p>
+                        {{m.health_disruptDaily_q}}
+                        <br/>
+                        <input type="radio" value="1" name="disruptDaily" ng-model="disruptDaily" ng-change="chronicSymptoms='';" />{{point3}} {{m.health_disruptDaily_yes}}
+                        <br/>
+                        <input type="radio" value="0" name="disruptDaily" ng-model="disruptDaily"/> {{m.health_disruptDaily_no}}
+                    </p>
+                    <div id="chronicSymptoms" ng-show="disruptDaily==0 && disruptDaily!=''">
+                        <p>
+                            {{m.health_chronicSymptoms_q}}
+                            <br/>
+                            <input type="radio" value="1" name="chronicSymptoms" ng-model="chronicSymptoms"/>{{point4}} {{m.health_chronicSymptoms_yes}}
+                            <br/>
+                            <input type="radio" value="0" name="chronicSymptoms" ng-model="chronicSymptoms"/>{{point5}} {{m.health_chronicSymptoms_no}}
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    37. {{m.health_disabilityComment}}
+                    <br/>
+                    <textarea name="disabilityComment" class="form-control" rows="5" ng-model="disabilityComment"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/education"  class="btn btn-lg btn-primary sharp" value="Back">Previous</a>
+                            <a ng-click="saveHealth(false)" class="btn btn-lg btn-primary sharp" value="Forward" ng-disabled="currentAssessment == 'PostExit'">Next</a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal"
+                                    ng-disabled="currentAssessment == 'PostExit'">Continue Later</button>
+                        </p>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    ng-click="continueLaterHealth=true;saveHealth(false)">Yes</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

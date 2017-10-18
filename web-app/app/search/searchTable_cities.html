@@ -1,0 +1,66 @@
+<div ng-init="getAllCitiesAverages()"> <!-- true: all cities; false for all Organization by city -->
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;">
+        <!-- <h2>Community Participants</h2><br><br> -->
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <h2 style="margin-top: 0 !important;">{{cityName || 'National Partners'}}</h2>
+                <!-- <h3>Tags</h3> -->
+            </div>
+            <div class="col-xs-12 col-md-1" style="padding-bottom:2%;">
+                <a href="#" class="generate-anchor">Print</a>
+            </div>
+            <div class="col-xs-12 col-md-1" style="padding-bottom:2%;">
+                <a href="#" class="generate-anchor">Export</a>
+            </div>
+            <div class="col-xs-12 col-md-2" style="padding-bottom: 20px;">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control"  placeholder="Search Cities" ng-model="searchOrg">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-1 generate-anchor">Sort by:</div> -->
+            <div class="col-xs-12 col-md-2 text-right" style="padding-bottom: 20px;">
+                <div class="dropdown">
+                    <select class="form-control" ng-model="sortOrder">
+                        <option value="None" selected>-- Sort by: --</option>
+                        <option value="orgName">Community</option>
+                        <option value="Entry">Average Entry</option>
+                        <option value="Exit">Average Exit</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>Action</th>-->
+                    <th>Community</th>
+                    <!--<th>Average Entry</th>
+                    <th>Average Exit</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="city in allCities | orderBy:sortOrder | filter: searchOrg">
+                    <!--<td>-->
+                        <!--<a ng-click="newMembers(org.orgId)" class="fa fa-user-plus" aria-hidden="true" title="Create new Member(s)"></a> |-->
+                        <!--<a ng-click="showReportByOrg(org.orgId)" class="fa fa-bar-chart" aria-hidden="true" title="Reports"></a>-->
+                    <!--</td>-->
+                    <td><a ng-click="showAllOrgsByCity(city.cityName)">{{city.cityName}}</a></td>
+                    <!--<td>{{ ((city.Entry / city.total)*100 ) || 0 | number:0 }}%</td>
+                    <td>{{ ((city.Exit / city.total)*100 ) || 0 | number:0 }}%</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div><a href="#/allCityView" class="btn btn-lg btn-info">Back to City List</a> </div>
+    </div>
+</div>

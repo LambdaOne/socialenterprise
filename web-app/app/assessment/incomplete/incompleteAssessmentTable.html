@@ -1,0 +1,33 @@
+<div ng-init="getIncompleteAssessmentList()" ng-click="validateSession()">
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;">
+        <!-- <h2>Community Participants</h2><br><br> -->
+        <div class="text-right">
+            <input type="text" name="caseNumber" ng-model="searchKeyword" placeholder="Search Case #">
+        </div>
+        <h2>Community has incomplete assessments</h2>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date Began</th>
+                        <th>Assessment</th>
+                        <th>Case ID</th>
+                        <th>Age</th>
+                        <th>Client</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="caseItem in clientCaseList | filter: searchKeyword">
+                    <tr>
+                        <td>{{caseItem.dateBegan |date :'MM/dd/yyyy'}} - {{caseItem.dateBegan |date :'h:mm:a'}}</td>
+                        <td>{{caseItem.assessmentType}}</td>
+                        <td><a ui-sref="caseReportView({'caseId':caseItem.caseNumber})">{{caseItem.caseNumber}}</a></td>
+                        <td>{{ today | amDifference  : caseItem.dateBegan : 'days' }} Days</td>
+                        <td>{{caseItem.caseWorker || ''}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

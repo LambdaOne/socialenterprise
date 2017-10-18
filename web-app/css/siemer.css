@@ -1,0 +1,116 @@
+/*Siemer style guide said Avenir font required */
+@font-face {
+  font-family: avenirSiemerFont;
+  src: url("fonts/avenirSiemerFont/AvenirLTStd-Book.otf");
+}
+
+body{
+    font-family: avenirSiemerFont;
+    background-color: #f2f2ed;
+}
+bodyWhite {
+    background-color: #FFFFFF !important;
+}
+nav.navbar-default{ background-color: #3694BF; border-color: transparent; border: none; }
+.navbar-header { background-color: white !important;}
+a.navbar-brand { background-color: white !important;}
+.brand-logo { height: 50px !important; margin-top: -15px; }
+.loginBackdrop {
+    background: url(../images/backdrop.jpg) no-repeat center bottom fixed; -webkit-background-size:100%; background-size: 100%;
+}
+@media (max-width: 768px) {
+    .jumbotron {
+        margin: 0 !important;
+    }
+    .btn-xl {
+        width: 100% !important;
+    }
+}
+.loginSection {
+    text-align:center; vertical-align:middle; max-width: 440px; 
+    margin-top: 50px;margin-left: auto !important; margin-right:auto !important;
+}
+.space20v{margin: 20px auto;}
+input[type=number]{ width: 100px; } 
+input.zip{ width: 100px; }
+.navbar-negative15h {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+.addfields{ margin:10px 0;width:100%;height:40px;color:#133B63;font-size:large; }
+fieldset{
+    background: #FCFCFC;
+    padding: 16px;
+    border: 1px solid #D5D5D5;
+    height: auto;
+}
+
+#choicesDisplay {
+    padding: 10px;
+    background: rgb(227, 250, 227);
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+.remove{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;
+}
+input[type="text"],
+select{
+    padding:5px;
+}
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:500px;
+    height:350px;
+}
+.croppedImg {
+    width:150px;
+    height:150px;
+    background-image: url("../images/profile.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.noMarginRight {
+    margin-right: 0 !important;
+}
+.rounded-borders{border-radius: 5px;}
+
+.assessmentInActive {
+    margin-left: 40px; min-height: 100px; text-align: center;
+}
+.assessmentActive {
+    margin-left: 0px !important;min-height: 100px; text-align: center;
+}
+
+.answerFormat {
+	color:#ec7c4f;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.domainSubFormat {
+	text-decoration: underline;
+}
+
+
+
+
+
+
+

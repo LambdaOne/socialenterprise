@@ -1,0 +1,731 @@
+/*
+ * Base structure
+ */
+
+
+
+/*Siemer style guide said Avenir font required */
+@font-face {
+  font-family: avenirSiemerFont;
+  src: url("fonts/avenirSiemerFont/AvenirLTStd-Book.otf");
+}
+
+body h4 {
+  color: #133B63;
+}
+ /*h2 {
+  color: #133B63;
+}*/
+
+.jumbotron {
+  background-color: white !important;
+  margin: 1% 2%;
+  min-height: 400px;
+  }
+
+/*darker blue for headings within jumbotrons*/
+.jumbotron h2, h3, p {
+  color: #133B63;
+}
+
+.generate-anchor {
+  color: #133B63;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-horizontal .control-label {
+  text-align: left;
+}
+
+/*dark blue for h3s within jumbotron*/
+.jumbotron h3 {
+  color: #133B63;
+}
+
+.skinnyPlus {
+  font-family:sans-serif;
+}
+
+.inputItem {
+  margin-left: 12px !important;
+
+}
+
+/*Panel over top of the assessment questions */
+.surveyHeader {
+background-color: #C3DA60; 
+height: auto; 
+border-radius: 5px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+  
+}
+
+.alignLogo {
+  margin-left: 20%;
+}
+
+/*Background color of top nav currently overriden within generic.html to be blue*/
+.navbar-inverse {
+  background-color: #fff;
+ 
+}
+
+.navbar-nav li a {
+  color:white !important;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: absolute;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+    box-shadow: 10px 10px 5px gray;
+    border-radius: 25px;
+
+}
+
+ul li {
+  color: white;
+}
+
+/*for white pipe separator between alert icon and Signout */
+.btn-separator:after {
+    content: ' ';
+    display: block;
+    float: left;
+    background: white;
+    margin-top: 5px;
+    margin: 5 10px;
+    height: 34px;
+    width: 1px;
+}
+
+button.navbar-toggle.collapsed {
+ background-color:#3694BF;
+/* border-color: white !important;*/
+}
+button.navbar-toggle {
+  background-color:#3694BF;
+}
+
+/* shadow and edges for jumbotrons */
+.central {
+    /*margin-bottom: 25px;*/
+    background-color: white;
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding-left: 8px;
+
+}
+
+.central h4 {
+  color: #133B63;
+}
+
+/*add some space between buttons and make them all the same width regardless of content */
+.btn-space {
+  margin-right: 10px;
+  width: 180px;
+}
+
+.btn-fatty {
+  min-height: 120px;
+  margin-bottom: 5px;
+}
+
+/* button focus for contrasting color when user selects language #ec7c4f is Siemer's orange-ish color */
+button#English:focus {
+  background: #ec7c4f;
+}
+
+button#Espanol:focus {
+  background: #ec7c4f;
+}
+
+
+/*Modify to increase ALL glyphicons - If only one needs enlarged/shrunk, then use it's class name*/
+.upperleft {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px; 
+  max-height: 35px; 
+  max-width:auto;
+}
+
+/*color for top right part of navbar */
+.top-right {
+  background-color: #3694BF;
+}
+
+.btn-med {
+    width: 160px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    color:#133B63;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/*increase button size*/
+.btn-xl {
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color:#133B63;
+    color:#ffffff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+/*for extra wide buttons*/
+.btn-xxl {
+    width: 220px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    color:#133B63;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+/*remove rounded corners from buttons*/
+.btn.sharp {
+  border-radius: 0;
+}
+
+.form-control.sharp {
+  border-radius: 0;
+}
+
+
+.centerfy img {
+  margin: 0 auto;
+}
+
+.centerfy {
+  text-align: center;
+}
+
+/* On hover color for glyphicons */
+ul > li > a:hover > .glyphicon {
+  color:orange;
+}
+
+.btn-primary {
+  background-color: #3694BF;
+}
+
+/* button color on hover */
+.btn-primary:hover {
+  background-color:gray !important;
+}
+
+/*TESTING color change for toggle button */
+
+.navbar-custom {
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 0;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+    color: #FFF;
+    background-color: blue;
+}
+
+.navbar-custom .navbar-text {
+    color: #FFF;
+}
+
+.navbar-custom .navbar-toggle {
+    border-color: #133B63;
+}
+
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color: #133B63;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+/*END TESTING */
+
+/* create appearance of tab panel to left of question area on all question pages */
+.nav-pills {
+  margin-right: -14px !important
+}
+
+
+
+
+/*increase size of plus icon for national community pages */
+.glyphicon.glyphicon-plus.ntnl {
+   font-size: 175%;
+}
+
+/*ASSESSMENT TAB/Button COLORS */
+/*GRAY Demographics Tab/button color on assessment*/
+.btn-demographics { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #808285; 
+} 
+ 
+.btn-demographics:hover, 
+.btn-demographics:focus, 
+.btn-demographics:active, 
+.btn-demographics.active, 
+.open .dropdown-toggle.btn-demographics { 
+  color: #ffffff; 
+  background-color: #52575E; 
+  border-color: #808285; 
+} 
+ 
+.btn-demographics:active, 
+.btn-demographics.active, 
+.open .dropdown-toggle.btn-demographics { 
+  background-image: none; 
+} 
+ 
+.btn-demographics.disabled, 
+.btn-demographics[disabled], 
+fieldset[disabled] .btn-demographics, 
+.btn-demographics.disabled:hover, 
+.btn-demographics[disabled]:hover, 
+fieldset[disabled] .btn-demographics:hover, 
+.btn-demographics.disabled:focus, 
+.btn-demographics[disabled]:focus, 
+fieldset[disabled] .btn-demographics:focus, 
+.btn-demographics.disabled:active, 
+.btn-demographics[disabled]:active, 
+fieldset[disabled] .btn-demographics:active, 
+.btn-demographics.disabled.active, 
+.btn-demographics[disabled].active, 
+fieldset[disabled] .btn-demographics.active { 
+  background-color: #808285; 
+  border-color: #808285; 
+} 
+ 
+.btn-demographics .badge { 
+  color: #808285; 
+  background-color: #ffffff; 
+} /* END GRAY Demographics Tab/button color on assessment*/
+
+
+/*LIME GREEN Health Tab/Button on Assessment*/
+.btn-lime { 
+  color: #ffffff; 
+  background-color: #C3DA60; 
+  border-color: #C3DA60; 
+} 
+ 
+.btn-lime:hover, 
+.btn-lime:focus, 
+.btn-lime:active, 
+.btn-lime.active, 
+.open .dropdown-toggle.btn-lime { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #C3DA60; 
+} 
+ 
+.btn-lime:active, 
+.btn-lime.active, 
+.open .dropdown-toggle.btn-lime { 
+  background-image: none; 
+} 
+ 
+.btn-lime.disabled, 
+.btn-lime[disabled], 
+fieldset[disabled] .btn-lime, 
+.btn-lime.disabled:hover, 
+.btn-lime[disabled]:hover, 
+fieldset[disabled] .btn-lime:hover, 
+.btn-lime.disabled:focus, 
+.btn-lime[disabled]:focus, 
+fieldset[disabled] .btn-lime:focus, 
+.btn-lime.disabled:active, 
+.btn-lime[disabled]:active, 
+fieldset[disabled] .btn-lime:active, 
+.btn-lime.disabled.active, 
+.btn-lime[disabled].active, 
+fieldset[disabled] .btn-lime.active { 
+  background-color: #C3DA60; 
+  border-color: #C3DA60; 
+} 
+ 
+.btn-lime .badge { 
+  color: #C3DA60; 
+  background-color: #ffffff; 
+} /*END LIME GREEN Health Tab/Button on Assessment*/
+
+/*ORANGE Basic Needs Tab/Button on Assessment*/
+.btn-orange { 
+  color: #ffffff; 
+  background-color: #EC7C4F; 
+  border-color: #ec7c4f; 
+} 
+ 
+.btn-orange:hover, 
+.btn-orange:focus, 
+.btn-orange:active, 
+.btn-orange.active, 
+.open .dropdown-toggle.btn-orange { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #ec7c4f; 
+} 
+ 
+.btn-orange:active, 
+.btn-orange.active, 
+.open .dropdown-toggle.btn-orange { 
+  background-image: none; 
+} 
+ 
+.btn-orange.disabled, 
+.btn-orange[disabled], 
+fieldset[disabled] .btn-orange, 
+.btn-orange.disabled:hover, 
+.btn-orange[disabled]:hover, 
+fieldset[disabled] .btn-orange:hover, 
+.btn-orange.disabled:focus, 
+.btn-orange[disabled]:focus, 
+fieldset[disabled] .btn-orange:focus, 
+.btn-orange.disabled:active, 
+.btn-orange[disabled]:active, 
+fieldset[disabled] .btn-orange:active, 
+.btn-orange.disabled.active, 
+.btn-orange[disabled].active, 
+fieldset[disabled] .btn-orange.active { 
+  background-color: #EC7C4F; 
+  border-color: #ec7c4f; 
+} 
+ 
+.btn-orange .badge { 
+  color: #EC7C4F; 
+  background-color: #ffffff; 
+} /*END ORANGE Basic Needs Tab/Button on Assessment*/
+
+/*TEAL Education Tab/Button on Assessment*/
+.btn-education { 
+  color: #ffffff; 
+  background-color: #2DC0D5; 
+  border-color: #2dc0d5; 
+} 
+ 
+.btn-education:hover, 
+.btn-education:focus, 
+.btn-education:active, 
+.btn-education.active, 
+.open .dropdown-toggle.btn-education { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #2dc0d5; 
+} 
+ 
+.btn-education:active, 
+.btn-education.active, 
+.open .dropdown-toggle.btn-education { 
+  background-image: none; 
+} 
+ 
+.btn-education.disabled, 
+.btn-education[disabled], 
+fieldset[disabled] .btn-education, 
+.btn-education.disabled:hover, 
+.btn-education[disabled]:hover, 
+fieldset[disabled] .btn-education:hover, 
+.btn-education.disabled:focus, 
+.btn-education[disabled]:focus, 
+fieldset[disabled] .btn-education:focus, 
+.btn-education.disabled:active, 
+.btn-education[disabled]:active, 
+fieldset[disabled] .btn-education:active, 
+.btn-education.disabled.active, 
+.btn-education[disabled].active, 
+fieldset[disabled] .btn-education.active { 
+  background-color: #2DC0D5; 
+  border-color: #2dc0d5; 
+} 
+ 
+.btn-education .badge { 
+  color: #2DC0D5; 
+  background-color: #ffffff; 
+} /*END TEAL Education Tab/Button on Assessment*/
+
+/*DARK BLUE Finances Tab/button on Assessment*/
+.btn-finance { 
+  color: #ffffff; 
+  background-color: #113B62; 
+  border-color: #113B62; 
+} 
+ 
+.btn-finance:hover, 
+.btn-finance:focus, 
+.btn-finance:active, 
+.btn-finance.active, 
+.open .dropdown-toggle.btn-finance { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #113B62; 
+} 
+ 
+.btn-finance:active, 
+.btn-finance.active, 
+.open .dropdown-toggle.btn-finance { 
+  background-image: none; 
+} 
+ 
+.btn-finance.disabled, 
+.btn-finance[disabled], 
+fieldset[disabled] .btn-finance, 
+.btn-finance.disabled:hover, 
+.btn-finance[disabled]:hover, 
+fieldset[disabled] .btn-finance:hover, 
+.btn-finance.disabled:focus, 
+.btn-finance[disabled]:focus, 
+fieldset[disabled] .btn-finance:focus, 
+.btn-finance.disabled:active, 
+.btn-finance[disabled]:active, 
+fieldset[disabled] .btn-finance:active, 
+.btn-finance.disabled.active, 
+.btn-finance[disabled].active, 
+fieldset[disabled] .btn-finance.active { 
+  background-color: #113B62; 
+  border-color: #113B62; 
+} 
+ 
+.btn-finance .badge { 
+  color: #113B62; 
+  background-color: #ffffff; 
+} /*END DARK BLUE Finances button*/
+
+/*Mild BLUE Community tab/button on assessment */
+.btn-community { 
+  color: #ffffff; 
+  background-color: #3294C0; 
+  border-color: #3294c0; 
+} 
+ 
+.btn-community:hover, 
+.btn-community:focus, 
+.btn-community:active, 
+.btn-community.active, 
+.open .dropdown-toggle.btn-community { 
+  color: #ffffff; 
+  background-color: #808285; 
+  border-color: #3294c0; 
+} 
+ 
+.btn-community:active, 
+.btn-community.active, 
+.open .dropdown-toggle.btn-community { 
+  background-image: none; 
+} 
+ 
+.btn-community.disabled, 
+.btn-community[disabled], 
+fieldset[disabled] .btn-community, 
+.btn-community.disabled:hover, 
+.btn-community[disabled]:hover, 
+fieldset[disabled] .btn-community:hover, 
+.btn-community.disabled:focus, 
+.btn-community[disabled]:focus, 
+fieldset[disabled] .btn-community:focus, 
+.btn-community.disabled:active, 
+.btn-community[disabled]:active, 
+fieldset[disabled] .btn-community:active, 
+.btn-community.disabled.active, 
+.btn-community[disabled].active, 
+fieldset[disabled] .btn-community.active { 
+  background-color: #3294C0; 
+  border-color: #3294c0; 
+} 
+ 
+.btn-community .badge { 
+  color: #3294C0; 
+  background-color: #ffffff; 
+} /*END Community button */
+
+.stylish-input-group .input-group-addon {
+  background: white !important;
+}
+
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
+}
+
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
+}
+
+/*.alpahWell {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+-o-border-radius: 0px;
+border-radius: 0px;
+border: 0px;
+}
+*/
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+    margin-right:-4px;
+    border:solid 1px #CCCCCC;
+    margin:2px;
+}
+
+.myTeamBorder {
+  border:1px solid lightgray;
+  padding:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

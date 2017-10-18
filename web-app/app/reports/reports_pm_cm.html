@@ -1,0 +1,39 @@
+<div>
+    <header></header>
+    <!--<div class="row-fluid text-right" style="padding: 10px; margin-right: 10%; margin-top: 2%;">
+        <div class="span12">
+            <a href="#" class="inline generate-anchor" style="margin-right: 10px;">Print</a>
+            <a href="#" class="inline generate-anchor">Export</a>
+        </div>
+    </div>-->
+    <div class="row jumbotron central">
+        <div class="col-xs-12 col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="pill" href data-target="#menu1">Partner and Network Average</a></li>
+                <li><a data-toggle="pill" href data-target="#menu2">Average Scores: Entry vs Exit</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="menu1" class="tab-pane fade in active">
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="text-capitalize">Partner and Network Averages: {{assessmentType}}</h4>
+                        </div>
+                    </div>
+                    <br />
+                    <div ng-include="'app/reports/report_partner_national_assessmenttype.html'" ></div>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="text-capitalize">Average Scores: Entry vs Exit</h4>
+                        </div>
+                    </div>
+                    <br />
+                    <div ng-include="'app/reports/report_partner_entry_exit.html'" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

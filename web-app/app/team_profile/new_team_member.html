@@ -1,0 +1,70 @@
+<div ng-init="validateSession()">
+    <header></header>
+    <div class="jumbotron central" style="background-color:white;">
+        <h2><span class="glyphicon glyphicon-plus skinnyPlus"></span> Case User</h2>
+        <br>
+        <!-- <h4>Enter at least one search criteria</h4><br><br>  -->
+        <form name="newMemberForm" novalidate>
+            <div class="row">
+                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newMemberForm.fname.$invalid && !newMemberForm.fname.$pristine }">
+                    <input class="form-control input-lg sharp" id="fname" name="fname" placeholder="First Name" type="text" ng-pattern="/^[a-zA-Z]*$/" required ng-model="firstname">
+                    <br />
+                </div>
+                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newMemberForm.lname.$invalid && !newMemberForm.lname.$pristine }">
+                    <input class="form-control input-lg sharp" id="lname" name="lname" placeholder="Last Name" type="text" ng-pattern="/^[a-zA-Z]*$/" required ng-model="lastname">
+                    <br />
+                </div>
+                <div class="col-sm-6 form-group">
+                    <select class="form-control input-lg sharp" id="title" required ng-model="title">
+                        <option value="0">-- Select A Title --</option>
+                        <option value="300">Case Manager</option>
+                        <option value="400">Program Manager</option>
+                        <option value="500" ng-show="userData.memberRoleNumber == 500">Admin</option>
+                        <option value="600" ng-show="userData.memberRoleNumber == 500 || userData.memberRoleNumber == 600">Director</option>
+                    </select>
+                    <br />
+                </div>
+                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newMemberForm.email.$invalid && !newMemberForm.email.$pristine }">
+                    <input class="form-control input-lg sharp" id="email" name="email"
+                           placeholder="Email (This will be the login userId)" type="email" required ng-model="email">
+                    <br />
+                </div>
+                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newMemberForm.pwd.$invalid && !newMemberForm.pwd.$pristine }">
+                    <input class="form-control input-lg sharp" id="pwd" name="pwd" placeholder="Password" type="password" required ng-model="pwd">
+                    <br />
+                </div>
+                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : newMemberForm.confirmPwd.$invalid && !newMemberForm.confirmPwd.$pristine }">
+                    <input class="form-control input-lg sharp" id="confirmPwd" name="confirmPwd" placeholder="Re-enter password" type="password"
+                           required ng-model="confirmPwd" pw-check='pwd'>
+                    <br />
+                </div>
+            </div>
+        </form>
+        <br><br>
+        <div class="text-center inline">
+            <p>
+                <button type="button" class="btn btn-xl btn-primary" data-toggle="modal" ng-click="createNewUser()" style="background-color:#133B63; color:white;"
+                        ng-disabled="!firstname || !lastname || !title || !pwd || !email || !confirmPwd">Create</button>
+                <button type="button" class="btn btn-xl btn-default" style="color:gray;" onclick="window.history.back();">Cancel</button>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Added Confirmation Profile Modal -->
+<div class="modal fade" id="addedModal" role="dialog" style="top: 25% !important;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Created New User</h4>
+            </div>
+            <div class="modal-body">
+                <p>You've added "Insert worker type" to City Community.</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" id="backToDash" data-dismiss="modal" ui-sref="dashboard()">Back to dashboard</a>
+                <a class="btn btn-primary" id="goToProfile" data-dismiss="modal" onclick="window.history.back();">View Profile</a>
+            </div>
+        </div>
+    </div>
+</div>

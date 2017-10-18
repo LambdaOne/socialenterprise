@@ -1,0 +1,266 @@
+<div>
+    <header></header>
+    <!-- <h3>Vertical Pills</h3> -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h4>READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a href="#" class="generate-anchor navbar-right" style="padding-right: 5%;">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="basicNeeds.jsp">
+                <h1>Basic Needs</h1>
+                <strong>Housing</strong>
+                <p>
+                    16. Is the client housed and safe from imminent risk of losing that housing?
+                    <br/>
+                    <input type="radio" value="" name="housing" onclick="toggleDisplayOff('housingSafe')" /> 1 point - No: Homeless or threatened with eviction
+                    <br/>
+                    <input type="radio" value="" name="housing" onclick="toggleDisplayOn('housingSafe')" /> Yes
+                </p>
+                <div id="housingSafe" style="display: none">
+                    <p>
+                        Is the housing safe, stable and affordable?
+                        <br/>
+                        <input type="radio" value="" name="housingSafe" onclick="toggleDisplayOff('housingAdequate')" /> 2 points - No: In transitional, temporary, or substandard housing; and/or current rent/mortgage payment is unaffordable
+                        <br/>
+                        <input type="radio" value="" name="housingSafe" onclick="toggleDisplayOn('housingAdequate')" /> Yes
+                    </p>
+                    <div id="housingAdequate" style="display: none">
+                        <p>
+                            Is the housing adequate? For example, is there enough space for everyone in the household?
+                            <br/>
+                            <input type="radio" value="" name="housingAdequate" onclick="toggleDisplayOff('housingUnsubsidized')" /> 3 points - No: In stable housing that is safe but only marginally adequate; may encounter normal housing problems; may be cost burdened but not severely
+                            <br/>
+                            <input type="radio" value="" name="housingAdequate" onclick="toggleDisplayOn('housingUnsubsidized')" /> Yes
+                        </p>
+                        <div id="housingUnsubsidized" style="display: none">
+                            <p>
+                                Is the housing unsubsidized?
+                                <br/>
+                                <input type="radio" value="" name="housingUnsubsidized" /> 4 points - No: Household is safe, adequate, subsidized housing
+                                <br/>
+                                <input type="radio" value="" name="housingUnsubsidized" /> 5 points - Yes: Household is safe, adequate, unsubsidized housing
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    17. Any additional comments on housing dimension:
+                    <br/>
+                    <textarea class="form-control" name="housingComment" rows="5"></textarea>
+                </p>
+                <strong>Food</strong>
+                <p>
+                    18. Does the client have food and means to prepare it?
+                    <br/>
+                    <input type="radio" value="" name="food" onclick="toggleDisplayOff('foodMeet')" /> 1 point - No: No food or means to prepare it. Relies to a significant degree on other sources of free or low-cost food
+                    <br/>
+                    <input type="radio" value="" name="food" onclick="toggleDisplayOn('foodMeet')" /> Yes
+                </p>
+                <div id="foodMeet" style="display: none">
+                    <p>
+                        Can the client meet basic food needs without assistance (assistance may include food pantry, family members, etc. If client uses food stamps but no other forms of food assistance, respond "yes")?
+                        <br/>
+                        <input type="radio" value="" name="foodMeet" onclick="toggleDisplayOff('foodStamps')" /> 2 points - No: Can meet basic food needs but requires occasional assistance
+                        <br/>
+                        <input type="radio" value="" name="foodMeet" onclick="toggleDisplayOn('foodStamps')" /> Yes
+                    </p>
+                    <div id="foodStamps" style="display: none">
+                        <p>
+                            Can the client meet basic food needs without food stamps?
+                            <br/>
+                            <input type="radio" value="" name="foodStamps" onclick="toggleDisplayOff('foodDesire')" /> 3 points - No: Household is on food stamps
+                            <br/>
+                            <input type="radio" value="" name="foodStamps" onclick="toggleDisplayOn('foodDesire')" /> Yes
+                        </p>
+                        <div id="foodDesire" style="display: none">
+                            <p>
+                                Can the client satisfy any food need he/she desires?
+                                <br/>
+                                <input type="radio" value="" name="foodDesire" /> 4 points - No: Can meet only basic food needs without assistance
+                                <br/>
+                                <input type="radio" value="" name="foodDesire" /> 5 points - Yes: Can choose to purchase any food household desires
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    19. Any additional comments on food dimension:
+                    <br/>
+                    <textarea class="form-control" name="foodComment" rows="5"></textarea>
+                </p>
+                <strong>Childcare</strong>
+                <p>
+                    20. Are there any children in the household who are 14 years old or younger?
+                    <br/>
+                    <input type="radio" value="" name="children" onclick="toggleDisplayOff('childcareAccess')" /> No (N/A)
+                    <br/>
+                    <input type="radio" value="" name="children" onclick="toggleDisplayOn('childcareAccess')" /> Yes
+                </p>
+                <div id="childcareAccess" style="display: none">
+                    <p>
+                        Does the client have access to some form of childcare?
+                        <br/>
+                        <input type="radio" value="" name="childcareAccess" onclick="toggleDisplayOff('childcareAffordable')" /> 1 point - No: Needs childcare, but none is available/accessible and/or child is not eligible
+                        <br/>
+                        <input type="radio" value="" name="childcareAccess" onclick="toggleDisplayOn('childcareAffordable')" /> Yes
+                    </p>
+                    <div id="childcareAffordable" style="display: none">
+                        <p>
+                            Does the client have access to reliable and affordable childcare?
+                            <br/>
+                            <input type="radio" value="" name="childcareAffordable" onclick="toggleDisplayOff('childcareQuality')" /> 2 points - No: Childcare is unreliable or unaffordable; inadequate supervision is a problem for childcare that is available; childcare may be unlicensed or not accredited
+                            <br/>
+                            <input type="radio" value="" name="childcareAffordable" onclick="toggleDisplayOn('childcareQuality')" /> Yes
+                        </p>
+                        <div id="childcareQuality" style="display: none">
+                            <p>
+                                Can the client access high quality childcare?
+                                <br/>
+                                <input type="radio" value="" name="childcareQuality" onclick="toggleDisplayOff('childcareSubsidy')" /> 3 points – No: Childcare is reliable, affordable, and may be licensed/accredited, but is not high quality.
+                                <br/>
+                                <input type="radio" value="" name="childcareQuality" onclick="toggleDisplayOn('childcareSubsidy')" /> Yes
+                            </p>
+                            <div id="childcareSubsidy" style="display: none">
+                                <p>
+                                    Can client select any type of childcare without a subsidy?
+                                    <br/>
+                                    <input type="radio" value="" name="childcareSubsidy" /> 4 points - No: Reliable, affordable childcare is available; may require a subsidy
+                                    <br/>
+                                    <input type="radio" value="" name="childcareSubsidy" /> 5 points - Yes: Able to select quality childcare of choice
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    21. Any additional comments on childcare dimension:
+                    <br/>
+                    <textarea class="form-control" name="childrenComment" rows="5"></textarea>
+                </p>
+                <strong>Transportation/Mobility</strong>
+                <p>
+                    22. Does the client have access to transportation?
+                    <br/>
+                    <input type="radio" value="" name="transportation" onclick="toggleDisplayOff('transportationReliable')" /> 1 point - No: No access to transportation, public or private; may have a car that is inoperable
+                    <br/>
+                    <input type="radio" value="" name="transportation" onclick="toggleDisplayOn('transportationReliable')" /> Yes
+                </p>
+                <div id="transportationReliable" style="display: none">
+                    <p>
+                        Is the transportation reliable (may answer no if, for instance, client always carpools and must rely on someone else for the ride)?
+                        <br/>
+                        <input type="radio" value="" name="transportationReliable" onclick="toggleDisplayOff('transportationAccessible')" /> 2 points - No: Transportation is available but unreliable, unpredictable, and/or unaffordable; may have a car but not insurance, license, etc.
+                        <br/>
+                        <input type="radio" value="" name="transportationReliable" onclick="toggleDisplayOn('transportationAccessible')" /> Yes
+                    </p>
+                    <div id="transportationAccessible" style="display: none">
+                        <p>
+                            Is the transportation generally accessible and convenient?
+                            <br/>
+                            <input type="radio" value="" name="transportationAccessible" onclick="toggleDisplayOff('transportationAffordable')" /> 3 points - No: Transportation is available and reliable but may be limited and/or inconvenient; drivers are licensed and minimally insured.
+                            <br/>
+                            <input type="radio" value="" name="transportationAccessible" onclick="toggleDisplayOn('transportationAffordable')" /> Yes
+                        </p>
+                        <div id="transportationAffordable" style="display: none">
+                            <p>
+                                Is the transportation affordable?
+                                <br/>
+                                <input type="radio" value="" name="transportationAffordable" /> 4 points - No: Transportation is generally accessible to meet basic travel needs, but may strain budget.
+                                <br/>
+                                <input type="radio" value="" name="transportationAffordable" /> 5 points - Yes: Transportation is readily available and affordable; car is adequately insured.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    23. Any additional comments on transportation/mobility dimension:
+                    <br/>
+                    <textarea class="form-control" name="transportationComment" rows="5"></textarea>
+                </p>
+                <strong>Safety</strong>
+                <p>
+                    24. Is the home or residence safe? (answer <span style="font-weight:bold;">&#34;NO&#34;</span> if there are concerns about personal safety within the household, e.g., from domestic violence or other physical safety concerns within the home)
+                    <br/>
+                    <input type="radio" value="" name="safeHome" onclick="toggleDisplayOff('safeOutside')" /> 1 point - No: Home or residence is not safe
+                    <br/>
+                    <input type="radio" value="" name="safeHome" onclick="toggleDisplayOn('safeOutside')" /> Yes
+                </p>
+                <div id="safeOutside" style="display: none">
+                    <p>
+                        Is the client safe outside the home? (answer no if there is immediate risk to the safety of the client, e.g. if a household member is involved in a gang)
+                        <br/>
+                        <input type="radio" value="" name="safeOutside" onclick="toggleDisplayOff('violenceLow')" /> 2 points - No: Personal safety threatened outside the home
+                        <br/>
+                        <input type="radio" value="" name="safeOutside" onclick="toggleDisplayOn('violenceLow')" /> Yes
+                    </p>
+                    <div id="violenceLow" style="display: none">
+                        <p>
+                            Is the current level of neighborhood violence low? Answer no if there are high violent crime rates in the neighborhood.
+                            <br/>
+                            <input type="radio" value="" name="violenceLow" onclick="toggleDisplayOff('crimeLow')" /> 3 points - No: Current level of safety is minimally adequate; ongoing safety planning is essential
+                            <br/>
+                            <input type="radio" value="" name="violenceLow" onclick="toggleDisplayOn('crimeLow')" /> Yes
+                        </p>
+                        <div id="crimeLow" style="display: none">
+                            <p>
+                                Is the current level of neighborhood property crime low?
+                                <br/>
+                                <input type="radio" value="" name="crimeLow" /> 4 points - No: Environment is free from violence; client may have general safety concerns regarding property
+                                <br/>
+                                <input type="radio" value="" name="crimeLow" /> 5 points - Yes: Environment is apparently safe and stable
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    25. Any additional comments on safety dimension:
+                    <br/>
+                    <textarea class="form-control" name="safeHomeComment" rows="5" id="comment"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/sampleFinances"><button type="button" class="btn btn-lg btn-primary sharp" value="Back">Previous</button>
+                            <a href="#/sampleEducation"><button type="button" class="btn btn-lg btn-primary sharp" value="Forward">Next</button></a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal1">Continue Later</button>
+                        </p>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go complete</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, later</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

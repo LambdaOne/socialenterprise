@@ -1,0 +1,18 @@
+<div>
+	<header></header>
+    <div class="jumbotron central" style="background-color:white;" ng-init="getToday()">
+        <h2>You've completed the assessment for Case ID: {{caseId}} on {{todayDate | date:'MM-dd-yyyy'}} at {{todayDate | date:'h:mm:ss'}}. </h2>
+        <br>
+        <!--  <h4>Enter at least one search criteria</h4>    -->
+        <br>
+        <div class="text-center inline">
+            <p>
+                <a href="#/dashboard" class="btn btn-xl btn-default" id="backToDashboard_Btn">Back to dashboard
+                </a>
+                <a ui-sref="caseReportView({'caseId': caseId})" class="btn btn-xl btn-primary" id="viewResults_Btn" style="background-color:#133B63; color:white;">View Results</a>
+                <!-- View Results should take user to results of the just completed assessment -->
+            </p>
+        </div>
+    </div>
+</div>
+        

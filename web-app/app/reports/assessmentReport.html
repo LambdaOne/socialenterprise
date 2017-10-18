@@ -1,0 +1,398 @@
+<div ng-init="getAnswersByCaseIdAndMgid()">
+    <div class="row jumbotron">
+        <!-- FINANCES -->
+        <div class="col-xs-12" pdf-save-content="exportthis">
+            <h1>Financial</h1>
+            <p>
+                The remainder of this tool should be filled out based on <strong>self-report of the client</strong>. If the case manager disagrees with something the client has said, then that can be noted in the free text space at the end of each domain section.
+            </p>
+            <h2 class="domainSubFormat">Income</h2>
+            <p>
+                6. Does the household have any income (including public assistance)? <span class="answerFormat">{{data.mgdFinances.string01}}</span>
+            </p>
+            <p>
+                Is the income adequate for meeting basic expenses (housing, childcare, transportation, food, etc.)? <span class="answerFormat">{{data.mgdFinances.string02}}</span>
+            </p>
+            <p>
+                Does income provide for savings or non-essential purchases? <span class="answerFormat">{{data.mgdFinances.string03}}</span>
+            </p>
+            <p>
+                Is income adequate and stable? <span class="answerFormat">{{data.mgdFinances.string04}}</span>
+            </p>
+            <p>
+                7. Any additional comments on income dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtFinances.text01}}</span>
+            </p>
+            <h2 class="domainSubFormat">Employment</h2>
+            <p>
+                8. Does the client have a job? <span class="answerFormat">{{data.mgdFinances.string05}}</span>
+            </p>
+            <p>
+                Is the job full-time? <span class="answerFormat">{{data.mgdFinances.string06}}</span>
+            </p>
+            <p>
+                Does the full-time job pay adequately and provide benefits? <span class="answerFormat">{{data.mgdFinances.string07}}</span>
+            </p>
+            <p>
+                Is the full-time job permanent? <span class="answerFormat">{{data.mgdFinances.string08}}</span>
+            </p>
+            <p>
+                9. Does the client have any legal history or legal issues preventing him/her from getting a job, obtaining housing, or performing another necessary activity?
+                <span class="answerFormat">{{data.mgdFinances.string09}}</span>
+            </p>
+            <p>
+                10. Is there an adult partner in the household (spouse or other)? If so, please answer the following questions about the other adult, not your client.
+                <span class="answerFormat">{{data.mgdFinances.string10}}</span>
+            </p>
+            <p>
+                Does the other adult have a job?
+                <span class="answerFormat">{{data.mgdFinances.string11}}</span>
+            </p>
+            <p>
+                Is the job full-time? <span class="answerFormat">{{data.mgdFinances.string12}}</span>
+            </p>
+            <p>
+                Does the full-time job pay adequately and provide benefits? <span class="answerFormat">{{data.mgdFinances.string13}}</span>
+            </p>
+            <p>
+                Is the full-time job permanent? <span class="answerFormat">{{data.mgdFinances.string14}}</span>
+            </p>
+            <p>
+                Does the other adult have any legal history or legal issues preventing him/her from getting a job, obtaining housing, or performing another necessary activity?
+                <span class="answerFormat">{{data.mgdFinances.string15}}</span>
+            </p>
+            <p>
+                11. Any additional comments on employment dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtFinances.text02}}</span>
+            </p>
+            <h2 class="domainSubFormat">Credit History</h2>
+            <p>
+                12. Does the client have a credit history? <span class="answerFormat">{{data.mgdFinances.dropdown01}}</span>
+            </p>
+            <p>
+                Does the client have adequate credit to do necessary activities, such as renting an apartment and/or purchasing a car? <span class="answerFormat">{{data.mgdFinances.dropdown02}}</span>
+            </p>
+            <p>
+                Does the client have any outstanding judgments, collections, or bankruptcy/foreclosures? <span class="answerFormat">{{data.mgdFinances.dropdown03}}</span>
+            </p>
+            <p>
+                Does the client have a credit repair plan? <span class="answerFormat">{{data.mgdFinances.dropdown04}}</span>
+            </p>
+            <p>
+                13. Any additional comments on credit history dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtFinances.text04}}</span>
+            </p>
+            <h2 class="domainSubFormat">Debt/Savings/Assets</h2>
+            <p>
+                14. Does the client have debt that they cannot currently make any payments on? <span class="answerFormat">{{data.mgdFinances.dropdown05}}</span>
+            </p>
+            <p>
+                Does the client have any outstanding debts that they can only pay sporadically or wage garnishments that are unplanned? <span class="answerFormat">{{data.mgdFinances.dropdown06}}</span>
+            </p>
+            <p>
+                Does the client have outstanding debts that can be paid consistently or planned for? <span class="answerFormat">{{data.mgdFinances.dropdown07}}</span>
+            </p>
+            <p>
+                Is the client currently saving money and/or building assets? <span class="answerFormat">{{data.mgdFinances.dropdown08}}</span>
+            </p>
+            <p>
+                15. Any additional comments on debt/savings/assets dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtFinances.text04}}</span>
+            </p>
+
+            <!-- BASIC NEEDS -->
+            <h1>Basic Needs</h1>
+            <h2 class="domainSubFormat">Housing</h2>
+            <p>
+                16. Is the client housed and safe from imminent risk of losing that housing? <span class="answerFormat">{{data.mgdBasicneeds.string01}}</span>
+            </p>
+            <p>
+                Is the housing safe, stable and affordable? <span class="answerFormat">{{data.mgdBasicneeds.string02}}</span>
+            </p>
+            <p>
+                Is the housing adequate? For example, is there enough space for everyone in the household? <span class="answerFormat">{{data.mgdBasicneeds.string03}}</span>
+            </p>
+            <p>
+                Is the housing unsubsidized? <span class="answerFormat">{{data.mgdBasicneeds.string04}}</span>
+            </p>
+            <p>
+                17. Any additional comments on housing dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtBasicneeds.text01}}</span>
+            </p>
+            <h2 class="domainSubFormat">Food</h2>
+            <p>
+                18. Does the client have food and means to prepare it? <span class="answerFormat">{{data.mgdBasicneeds.string05}}</span>
+            </p>
+            <p>
+                Can the client meet basic food needs without assistance (assistance may include food pantry, family members, etc. If client uses food stamps but no other forms of food assistance, respond "yes")?
+                <span class="answerFormat">{{data.mgdBasicneeds.string06}}</span>
+            </p>
+            <p>
+                Can the client meet basic food needs without food stamps? <span class="answerFormat">{{data.mgdBasicneeds.string07}}</span>
+            </p>
+            <p>
+                Can the client satisfy any food need he/she desires? <span class="answerFormat">{{data.mgdBasicneeds.string08}}</span>
+            </p>
+            <p>
+                19. Any additional comments on food dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtBasicneeds.text02}}</span>
+            </p>
+            <h2 class="domainSubFormat">Childcare</h2>
+            <p>
+                20. Are there any children in the household who are 14 years old or younger? <span class="answerFormat">{{data.mgdBasicneeds.string09}}</span>
+            </p>
+            <p>
+                Does the client have access to some form of childcare? <span class="answerFormat">{{data.mgdBasicneeds.string10}}</span>
+
+            </p>
+            <p>
+                Does the client have access to reliable and affordable childcare? <span class="answerFormat">{{data.mgdBasicneeds.string11}}</span>
+            </p>
+            <p>
+                Can the client access high quality childcare? <span class="answerFormat">{{data.mgdBasicneeds.string12}}</span>
+            </p>
+            <p>
+                Can client select any type of childcare without a subsidy? <span class="answerFormat">{{data.mgdBasicneeds.string13}}</span>
+            </p>
+            <p>
+                21. Any additional comments on childcare dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtBasicneeds.text03}}</span>
+            </p>
+            <h2 class="domainSubFormat">Transportation/Mobility</h2>
+            <p>
+                22. Does the client have access to transportation? <span class="answerFormat">{{data.mgdBasicneeds.string14}}</span>
+            </p>
+            <p>
+                Is the transportation reliable (may answer &#34;No&#34; if, for instance, client always carpools and must rely on someone else for the ride)?
+                <span class="answerFormat">{{data.mgdBasicneeds.string15}}</span>
+            </p>
+            <p>
+                Is the transportation generally accessible and convenient?
+                <span class="answerFormat">{{data.mgdBasicneeds.dropdown01}}</span>
+            </p>
+            <p>
+                Is the transportation affordable? <span class="answerFormat">{{data.mgdBasicneeds.dropdown02}}</span>
+            </p>
+            <p>
+                23. Any additional comments on transportation/mobility dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtBasicneeds.text04}}</span>
+            </p>
+            <h2 class="domainSubFormat">Safety</h2>
+            <p>
+                24. Is the home or residence safe? (answer <span style="font-weight:bold;">&#34;NO&#34;</span> if there are concerns about personal safety within the household, e.g., from domestic violence or other physical safety concerns within the home)
+                <span class="answerFormat">{{data.mgdBasicneeds.dropdown03}}</span>
+            </p>
+            <p>
+                Is the client safe outside the home? (answer no if there is immediate risk to the safety of the client, e.g. if a household member is involved in a gang)
+                <span class="answerFormat">{{data.mgdBasicneeds.dropdown04}}</span>
+            </p>
+            <p>
+                Is the current level of neighborhood violence low? Answer no if there are high violent crime rates in the neighborhood.
+                <span class="answerFormat">{{data.mgdBasicneeds.dropdown05}}</span>
+            </p>
+            <p>
+                Is the current level of neighborhood property crime low? <span class="answerFormat">{{data.mgdBasicneeds.dropdown06}}</span>
+            </p>
+            <p>
+                25. Any additional comments on safety dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtBasicneeds.text05}}</span>
+            </p>
+
+            <!-- EDUCATION -->
+            <h1>Education</h1>
+            <h2 class="domainSubFormat">Children's Education</h2>
+            <p>
+                26. Does the client have any school-age children? <span class="answerFormat">{{data.mgdEducation.string01}}</span>
+            </p>
+            <p>
+                Are all eligible children enrolled in school (or being homeschooled)? <span class="answerFormat">{{data.mgdEducation.string02}}</span>
+            </p>
+            <p>
+                Are all enrolled children attending classes? <span class="answerFormat">{{data.mgdEducation.string03}}</span>
+            </p>
+            <p>
+                Are all enrolled children attending classes at-least occasionally (e.g. not daily, but sometimes).  (Answer <span style="font-weight:bold;">&#34;NO&#34;</span> if any school-age child moved to a different school for any disruptive/unplanned reason)
+                <span class="answerFormat">{{data.mgdEducation.string04}}</span>
+            </p>
+            <p>
+                Are all enrolled children attending class regularly and accessing any needed educational support services? <span class="answerFormat">{{data.mgdEducation.string05}}</span>
+            </p>
+            <p>
+                27. Any additional comments on children's education dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtEducation.text01}}</span>
+            </p>
+            <h2 class="domainSubFormat">Adult Education</h2>
+            <p>
+                28. Does the client have the literacy skills to function effectively in society? <span class="answerFormat">{{data.mgdEducation.string06}}</span>
+            </p>
+            <p>
+                Does the client have a high school diploma or GED? <span class="answerFormat">{{data.mgdEducation.string07}}</span>
+            </p>
+            <p>
+                Has the client begun any additional education/training needed to become employable? <span class="answerFormat">{{data.mgdEducation.string08}}</span>
+            </p>
+            <p>
+                Has the client completed education/training needed to become employable? <span class="answerFormat">{{data.mgdEducation.string09}}</span>
+            </p>
+            <p>
+                29. Any additional comments on adult education dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtEducation.text02}}</span>
+            </p>
+
+            <!-- HEALTH -->
+            <h1>Health-related</h1>
+            <h2 class="domainSubFormat">Health Care</h2>
+            <p>
+                30. Does <strong>everyone</strong> in the household have medical coverage? <span class="answerFormat">{{data.mgdHealth.string01}}</span>
+            </p>
+            <p>
+                Does anyone in the household have an immediate health care need? <span class="answerFormat">{{data.mgdHealth.string02}}</span>
+            </p>
+            <p>
+                Is the client or household currently on an unsubsidized health insurance plan (i.e., private insurance not Medicaid, Medicare or subsidized insurance from the health insurance exchange)?
+                <span class="answerFormat">{{data.mgdHealth.string03}}</span>
+            </p>
+            <p>
+                Is the health insurance affordable? <span class="answerFormat">{{data.mgdHealth.string04}}</span>
+            </p>
+            <p>
+                31. Any additional comments on health care dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtHealth.text01}}</span>
+            </p>
+            <h2 class="domainSubFormat">Mental Health</h2>
+            <p>
+                32. Does the client have untreated moderate or severe mental health problems? <span class="answerFormat">{{data.mgdHealth.string05}}</span>
+            </p>
+            <p>
+                Is the client a danger to him/herself or others? <span class="answerFormat">{{data.mgdHealth.string06}}</span>
+            </p>
+            <p>
+                Does the client have some level of difficulty in functioning due to mild mental health symptoms? <span class="answerFormat">{{data.mgdHealth.string07}}</span>
+            </p>
+            <p>
+                Is the client currently undergoing treatment for a mental health condition? <span class="answerFormat">{{data.mgdHealth.string08}}</span>
+            </p>
+            <p>
+                33. Any additional comments on mental health dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtHealth.text02}}</span>
+            </p>
+            <h2 class="domainSubFormat">Substance Abuse</h2>
+            <p>
+                34. Is the client seriously dependent on drugs or alcohol? <span class="answerFormat">{{data.mgdHealth.string09}}</span>
+            </p>
+            <p>
+                Does the client require hospitalization or rehabilitation? <span class="answerFormat">{{data.mgdHealth.string10}}</span>
+            </p>
+            <p>
+                Does the client show evidence of recurrent social, emotional, or physical problems associated with drug or alcohol use? <span class="answerFormat">{{data.mgdHealth.string11}}</span>
+            </p>
+            <p>
+                Has the client had any substance abuse problems during the past 6 months? <span class="answerFormat">{{data.mgdHealth.string12}}</span>
+            </p>
+            <p>
+                35. Any additional comments on substance abuse dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtHealth.text03}}</span>
+            </p>
+            <h2 class="domainSubFormat">Disabilities</h2>
+            <p>
+                36. Does the client have moderate or severe disabilities that cannot be addressed through services, medication or environmental modification?
+                <span class="answerFormat">{{data.mgdHealth.string13}}</span>
+            </p>
+            <p>
+                Does the client almost always or always have severe symptoms affecting their housing, employment, social interactions, etc.? <span class="answerFormat">{{data.mgdHealth.string14}}</span>
+            </p>
+            <p>
+                Does the client ever have any symptoms that may disrupt daily living, even rarely, that cannot be addressed through environmental modifications? Answer &#34;No&#34; if client is able to utilize modifications (environmental, medications, etc.) to overcome those symptoms.
+                <span class="answerFormat">{{data.mgdHealth.string15}}</span>
+            </p>
+            <p>
+                Does the client have any past acute or chronic symptoms that are currently controlled by services, medication or environmental modification?
+                <span class="answerFormat">{{data.mgdHealth.dropdown01}}</span>
+            </p>
+            <p>
+                37. Any additional comments on disabilities dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtHealth.text04}}</span>
+            </p>
+
+
+            <!-- COMMUNITY SUPPORT -->
+            <h1>Community Support</h1>
+            <h2 class="domainSubFormat">Family/Social Relationships</h2>
+            <p>
+                38. Does the client have support from family or friends? <span class="answerFormat">{{data.mgdCommunity.string01}}</span>
+            </p>
+            <p>
+                Do family/friends relate well and are they active in changing negative behaviors? <span class="answerFormat">{{data.mgdCommunity.string02}}</span>
+            </p>
+            <p>
+                Does client have strong support from family/friends and do family/friends support one another? <span class="answerFormat">{{data.mgdCommunity.string03}}</span>
+            </p>
+            <p>
+                Is the client's support network expanding? <span class="answerFormat">{{data.mgdCommunity.string04}}</span>
+            </p>
+            <p>
+                39. Any additional comments on family/social relationships dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtCommunity.text01}}</span>
+            </p>
+            <h2 class="domainSubFormat">Community Involvement</h2>
+            <p>
+                40. Is the client in crisis mode? <span class="answerFormat">{{data.mgdCommunity.string05}}</span>
+            </p>
+            <p>
+                Does the client have the skills, motivation, and knowledge to become involved in their community? Involvement may include anything from civic engagement to attending church regularly; it should be defined by the client.
+                <span class="answerFormat">{{data.mgdCommunity.string06}}</span>
+            </p>
+            <p>
+                Does the client have knowledge of how to become involved in their community?
+                <span class="answerFormat">{{data.mgdCommunity.string07}}</span>
+            </p>
+            <p>
+                Is the client actively involved? <span class="answerFormat">{{data.mgdCommunity.string08}}</span>
+            </p>
+            <p>
+                41. Any additional comments on community involvement dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtCommunity.text02}}</span>
+            </p>
+            <h2 class="domainSubFormat">Legal</h2>
+            <p>
+                42. Has the client had any involvement with the legal system in the last 12 months (other than minor traffic offenses)? <span class="answerFormat">{{data.mgdCommunity.string09}}</span>
+            </p>
+            <p>
+                Does the client have legal representation for any legal issues and are those issues moving towards resolution or resolved? <span class="answerFormat">{{data.mgdCommunity.string10}}</span>
+            </p>
+            <p>
+                Does the client have sufficient legal representation to respond to the legal action? <span class="answerFormat">{{data.mgdCommunity.string11}}</span>
+            </p>
+            <p>
+                Does the client understand how to resolve the issue, even if they do not yet have legal assistance? <span class="answerFormat">{{data.mgdCommunity.string12}}</span>
+            </p>
+            <p>
+                43. Any additional comments on legal dimension:
+                <br/>
+                <span class="answerFormat">{{data.mgtCommunity.text03}}</span>
+            </p>
+        </div>
+       <!-- <div class="col-xs-12" >
+            <a pdf-save-button="exportthis" pdf-name="AssessmentReport.pdf" class="inline generate-anchor btn btn-md btn-primary" style="margin-right: 10px;color:white;">Print Pdf</a>
+        </div> -->
+    </div>
+
+
+</div>

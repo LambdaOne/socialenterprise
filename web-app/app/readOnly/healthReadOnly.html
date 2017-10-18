@@ -1,0 +1,220 @@
+<div>
+    <header></header>
+    <!-- Vertical Pills -->
+    <div class="row">
+        <div class="col-xs-3 col-md-2">
+            <div ng-include="'app/readOnly/assessmentSidebarReadOnly.html'"></div>
+        </div>
+        <div class="col-xs-9 col-md-9 surveyHeader">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h4>READ ONLY VERSION</h4>
+                </div>
+                <div class="col-xs-5 col-xs-offset-4">
+                    <a href="#" class="generate-anchor navbar-right" style="padding-right: 5%;">
+                        <h4><u>Assessment Complete</u></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-md-9" style="background-color: white; height: auto; box-shadow: 10px 10px 5px gray; border-radius: 5px;">
+            <form class="form-horizontal" method="post" action="health.jsp">
+                <h1>Health-related</h1>
+                <strong>Health Care </strong>
+                <p>
+                    30. Does <strong>everyone</strong> in the household have medical coverage?
+                    <br/>
+                    <input type="radio" value="" name="medicalCoverage" onclick="toggleDisplayOn('immediateHealthNeed');toggleDisplayOff('unsubsidizedHealthPlan');" /> No
+                    <br/>
+                    <input type="radio" value="" name="medicalCoverage" onclick="toggleDisplayOff('immediateHealthNeed');toggleDisplayOn('unsubsidizedHealthPlan');" /> Yes
+                </p>
+                <div id="immediateHealthNeed" style="display: none">
+                    <p>
+                        Does anyone in the household have an immediate health care need?
+                        <br/>
+                        <input type="radio" value="" name="immediateHealthNeed" /> 1 point - Yes: No medical coverage with immediate need
+                        <br/>
+                        <input type="radio" value="" name="immediateHealthNeed" /> 2 points - No: No medical coverage and great difficulty accessing medical care when needed
+                    </p>
+                </div>
+                <div id="unsubsidizedHealthPlan" style="display: none">
+                    <p>
+                        Is the client or household currently on an unsubsidized health insurance plan (i.e., private insurance not Medicaid, Medicare or subsidized insurance from the health insurance exchange)?
+                        <br/>
+                        <input type="radio" value="" name="unsubsidizedHealthPlan" onclick="toggleDisplayOff('insuranceAffordable')" /> 3 points - No: Has subsidized health insurance (including Medicare and/or Medicaid)
+                        <br/>
+                        <input type="radio" value="" name="unsubsidizedHealthPlan" onclick="toggleDisplayOn('insuranceAffordable')" /> Yes
+                    </p>
+                    <div id="insuranceAffordable" style="display: none">
+                        <p>
+                            Is the health insurance affordable?
+                            <br/>
+                            <input type="radio" value="" name="insuranceAffordable" /> 4 points - No: All members can get medical care when needed but may strain budget
+                            <br/>
+                            <input type="radio" value="" name="insuranceAffordable" /> 5 points - Yes: All members are covered by affordable, adequate health insurance
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    31. Any additional comments on health care dimension:
+                    <br/>
+                    <textarea name="housingComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Mental Health</strong>
+                <p>
+                    32. Does the client have untreated moderate or severe mental health problems?
+                    <br/>
+                    <input type="radio" value="" name="untreatedMental" onclick="toggleDisplayOn('mentalDanger');toggleDisplayOff('mentalDifficulty');" /> Yes
+                    <br/>
+                    <input type="radio" value="" name="untreatedMental" onclick="toggleDisplayOff('mentalDanger');toggleDisplayOn('mentalDifficulty');" /> No
+                </p>
+                <div id="mentalDanger" style="display: none">
+                    <p>
+                        Is the client a danger to him/herself or others?
+                        <br/>
+                        <input type="radio" value="" name="mentalDanger" /> 1 point - Yes: Client is danger to self or others; recurring suicidal ideation; experiencing severe difficulty in day-to-day life due to psychological problems
+                        <br/>
+                        <input type="radio" value="" name="mentalDanger" /> 2 points - No: Client has recurrent mental health symptoms that may affect behavior but are not a danger to self/others; persistent problems with functioning due to mental health symptoms
+                    </p>
+                </div>
+                <div id="mentalDifficulty" style="display: none">
+                    <p>
+                        Does the client have some level of difficulty in functioning due to mild mental health symptoms?
+                        <br/>
+                        <input type="radio" value="" name="mentalDifficulty" onclick="toggleDisplayOff('mentalTreatment')" /> 3 points - Yes: Mild symptoms may be present but are transient; only moderate or slight difficulty in functioning due to mental health problems
+                        <br/>
+                        <input type="radio" value="" name="mentalDifficulty" onclick="toggleDisplayOn('mentalTreatment')" /> No or n/a
+                    </p>
+                    <div id="mentalTreatment" style="display: none">
+                        <p>
+                            Is the client currently undergoing treatment for a mental health condition?
+                            <br/>
+                            <input type="radio" value="" name="mentalTreatment" /> 4 points - Yes: Currently being treated for condition; no or very minimal current symptoms
+                            <br/>
+                            <input type="radio" value="" name="mentalTreatment" /> 5 points - No: Symptoms are absent or rare/good or superior functioning in wide range of activities; no more than everyday problems or concerns
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    33. Any additional comments on mental health dimension:
+                    <br/>
+                    <textarea name="educationComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Substance Abuse</strong>
+                <p>
+                    34. Is the client seriously dependent on drugs or alcohol?
+                    <br/>
+                    <input type="radio" value="" name="substanceDependent" onclick="toggleDisplayOn('substanceRehab');toggleDisplayOff('substanceRecurrent');" /> Yes
+                    <br/>
+                    <input type="radio" value="" name="substanceDependent" onclick="toggleDisplayOff('substanceRehab');toggleDisplayOn('substanceRecurrent');" /> No
+                </p>
+                <div id="substanceRehab" style="display: none">
+                    <p>
+                        Does the client require hospitalization or rehabilitation?
+                        <br/>
+                        <input type="radio" value="" name="substanceRehab" /> 1 point - Yes: Meets criteria for severe abuse/dependency; rehab or hospitalization may be necessary
+                        <br/>
+                        <input type="radio" value="" name="substanceRehab" /> 2 points - No: Significant abuse of substances, resulting in chronic family/work difficulties
+                    </p>
+                </div>
+                <div id="substanceRecurrent" style="display: none">
+                    <p>
+                        Does the client show evidence of recurrent social, emotional, or physical problems associated with drug or alcohol use?
+                        <br/>
+                        <input type="radio" value="" name="substanceRecurrent" onclick="toggleDisplayOff('substanceAbuse')" /> 3 points - Yes: Occasional abuse of substances, may result in abuse pattern and/or negative consequences
+                        <br/>
+                        <input type="radio" value="" name="substanceRecurrent" onclick="toggleDisplayOn('substanceAbuse')" /> No
+                    </p>
+                    <div id="substanceAbuse" style="display: none">
+                        <p>
+                            Has the client had any substance abuse problems during the past 6 months?
+                            <br/>
+                            <input type="radio" value="" name="substanceAbuse" /> 4 points - Yes: Occasional misuse of alcohol and/or prescription drugs, generally uses in an appropriate manner
+                            <br/>
+                            <input type="radio" value="" name="substanceAbuse" /> 5 points - No: Use alcohol and prescription drugs in an appropriate manner (minimal to no usage)
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    35. Any additional comments on substance abuse dimension:
+                    <br/>
+                    <textarea name="educationComment" class="form-control" rows="5"></textarea>
+                </p>
+                <strong>Disabilities</strong>
+                <p>
+                    36. Does the client have moderate or severe disabilities that cannot be addressed through services, medication or environmental modification?
+                    <br/>
+                    <input type="radio" value="" name="disabilities" onclick="toggleDisplayOn('severeSymptoms');toggleDisplayOff('disruptDaily');" /> Yes
+                    <br/>
+                    <input type="radio" value="" name="disabilities" onclick="toggleDisplayOff('severeSymptoms');toggleDisplayOn('disruptDaily');" /> No
+                </p>
+                <div id="severeSymptoms" style="display: none">
+                    <p>
+                        Does the client almost always or always have severe symptoms affecting their housing, employment, social interactions, etc.?
+                        <br/>
+                        <input type="radio" value="" name="severeSymptoms" /> 1 point - Yes: Almost always has severe acute or chronic symptoms affecting housing, employment, social interactions, etc.
+                        <br/>
+                        <input type="radio" value="" name="severeSymptoms" /> 2 points - No: Regularly or sometimes has moderate/severe symptoms affecting housing, employment, social interactions, etc.
+                    </p>
+                </div>
+                <div id="disruptDaily" style="display: none">
+                    <p>
+                        Does the client ever have any symptoms that may disrupt daily living, even rarely, that cannot be addressed through environmental modifications? Answer no if client is able to utilize modifications (environmental, medications, etc.) to overcome those symptoms.
+                        <br/>
+                        <input type="radio" value="" name="disruptDaily" onclick="toggleDisplayOff('chronicSymptoms')" /> 3 points - Yes: Sometimes has acute or chronic symptoms affecting housing, employment, social interactions, etc.
+                        <br/>
+                        <input type="radio" value="" name="disruptDaily" onclick="toggleDisplayOn('chronicSymptoms')" /> No
+                    </p>
+                    <div id="chronicSymptoms" style="display: none">
+                        <p>
+                            Does the client have any past acute or chronic symptoms that are currently controlled by services, medication or environmental modification?
+                            <br/>
+                            <input type="radio" value="" name="chronicSymptoms" /> 4 points - Yes: Asymptomatic, condition controlled by services, medication, or modification
+                            <br/>
+                            <input type="radio" value="" name="chronicSymptoms" /> 5 points - No: No identified disability
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    37. Any additional comments on disabilities dimension:
+                    <br/>
+                    <textarea name="educationComment" class="form-control" rows="5"></textarea>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-2 col-md-6 col-md-offset-4 col-lg-12 col-lg-offset-7">
+                        <p>
+                            <a href="#/sampleEducation"><button type="button" class="btn btn-lg btn-primary sharp" value="Back" style="width">Previous</button></a>
+                            <a href="#/sampleCommunity"><button type="button" class="btn btn-lg btn-primary sharp" value="Forward" >Next</button></a>
+                            <button type="button" class="btn btn-lg btn-default sharp" data-toggle="modal" data-target="#laterModal">Continue Later</button>
+                        </p>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="clearfix visible-lg"></div>
+                </div>
+            </form>
+            <!-- END OF PAGE FORM -->
+            <!-- START Later Profile Modal -->
+            <div class="modal fade" id="laterModal" role="dialog" style="top: 25% !important;">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm Continue Later</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to continue later?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go complete</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, later</button>
+                            <!-- Yes, Later should take user back to participant's profile page? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END of Later Profile Modal -->
+        </div>
+    </div>
+</div>

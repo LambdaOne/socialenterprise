@@ -1,0 +1,49 @@
+<div ng-init="showReportByPartner()">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="row centerfy">
+                <div class="col-xs-12">
+                    <canvas id="bar" class="chart chart-bar"
+                            chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride">
+                    </canvas>
+                    <!--<img src="./images/report_new.png" class="img-responsive"/>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 ">
+                    <label>Start Date</label><br /><input type="date" name="startDate" ng-model="$parent.startDate">
+                </div>
+                <div class="col-sm-2">&nbsp;&nbsp;</div>
+                <div class="col-xs-12 col-sm-5">
+                    <label>End Date</label><br /><input type="date" name="endDate" ng-model="$parent.endDate">
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <select ng-model="$parent.assessmentType" style="width: 80%">
+                        <option value="entry">Entry</option>
+                        <option value="exit">Exit</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <button class="btn btn-primary" ng-click="showReportByPartner()" >Search Now</button>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    Partner Average n={{partnerCount || 0}}
+                </div>
+                <div class="col-xs-12 text-center">
+                    Network Average n={{networkCount || 0}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
